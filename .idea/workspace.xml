@@ -306,6 +306,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="FullScreen" value="true" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -711,6 +712,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="96cf48ec-0a26-4014-83f2-9de9d0aa5e4f" name="Default" comment="" />
@@ -721,12 +725,12 @@
       <workItem from="1507914014223" duration="1790000" />
       <workItem from="1507919520302" duration="432000" />
       <workItem from="1507919976325" duration="814000" />
-      <workItem from="1507922104383" duration="6000" />
+      <workItem from="1507922104383" duration="160000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3042000" />
+    <option name="totallyTimeSpent" value="3196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="0" />
