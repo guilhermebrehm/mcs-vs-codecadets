@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.entity;
 
 import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.grid.GridPosition;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -8,14 +9,13 @@ import org.academiadecodigo.bootcamp.grid.Grid;
 public class CodeCadet extends GameEntity implements Shootable {
 
     //Constructor
-    public CodeCadet(Grid grid,int i) {
+    public CodeCadet(Grid grid, GridPosition gridPosition) {
         super.setGrid(grid);
-        codeCadetPosition(i);
-
+        super.setGridPosition(gridPosition);
     }
 
     public void codeCadetPosition(int i) {
-        super.setGridPosition((i*((super.getGrid().getWidth()-(4*super.getGrid().getCellSize())))/5)+((i-1)*super.getGrid().getCellSize()),1);
+        super.setGridPosition((i*((super.getGrid().getWidth()-(4*Grid.CELL_SIZE)))/5)+((i-1)*Grid.CELL_SIZE),1);
     }
 
     @Override
