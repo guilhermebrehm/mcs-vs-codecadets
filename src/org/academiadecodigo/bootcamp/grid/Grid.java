@@ -10,7 +10,7 @@ public class Grid {
     private int cols;
     private int rows;
     private Rectangle rectangle;
-    private int cellSize = 10;
+    public static int CELL_SIZE = 10;
     private int width;
     private int height;
     private int padding = 10;
@@ -19,16 +19,16 @@ public class Grid {
     public Grid(int cols, int rows) {
         this.cols = cols;
         this.rows = rows;
-        this.width = cols * cellSize;
-        this.height = rows * cellSize;
+        this.width = cols * CELL_SIZE;
+        this.height = rows * CELL_SIZE;
     }
 
     public int colToX(int col){
-        return col * cellSize + padding;
+        return col * CELL_SIZE + padding;
     }
 
     public int rowToY(int row){
-        return row * cellSize + padding;
+        return row * CELL_SIZE + padding;
     }
 
 
@@ -40,7 +40,4 @@ public class Grid {
         return width;
     }
 
-    public int getCellSize() {
-        return cellSize;
-    }
 }

@@ -18,6 +18,9 @@ public abstract class GameEntity implements Movable {
     public void setGridPosition(int col,int row) {
         this.gridPosition = new GridPosition(col,row);
     }
+    public void setGridPosition(GridPosition gridPosition) {
+        this.gridPosition = gridPosition;
+    }
 
     public void setGrid(Grid grid) {
         this.grid = grid;
