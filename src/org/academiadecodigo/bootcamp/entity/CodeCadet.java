@@ -18,7 +18,7 @@ public class CodeCadet extends GameEntity implements Shootable {
 
         int x = grid.colToX(gridPosition.getCol());
         int y = grid.rowToY(gridPosition.getRow());
-        rectangle = new Rectangle(x, y, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle = new Rectangle(x - Grid.PADDING, y - Grid.PADDING, Grid.CELL_SIZE, Grid.CELL_SIZE);
         rectangle.fill();
     }
 

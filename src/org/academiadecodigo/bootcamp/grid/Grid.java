@@ -42,4 +42,11 @@ public class Grid {
         return width;
     }
 
+    public int getCols() {
+        return cols;
+    }
+
+    public int getRows() {
+        return rows;
+    }
 }

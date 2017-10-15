@@ -18,7 +18,7 @@ public class Game {
     public Game() {
         this.grid = new Grid(100,80);
         this.gameEntityFactory = new GameEntityFactory();
-        this.gameEntities = gameEntityFactory.getGameEntities(grid, 8);
+        this.gameEntities = gameEntityFactory.getGameEntities(grid, 4);
         this.collisionDetector = new CollisionDetector();
     }
 
