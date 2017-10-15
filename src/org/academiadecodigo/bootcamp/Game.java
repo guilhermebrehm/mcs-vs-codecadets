@@ -11,17 +11,20 @@ public class Game {
 
     private Grid grid;
     private GameEntity[] gameEntities;
+    private GameEntityFactory gameEntityFactory;
     private CollisionDetector collisionDetector;
 
     //Constructor
     public Game() {
-        this.grid = new Grid(100,100);
-        this.gameEntities = GameEntityFactory.getGameEntities(grid);
+        this.grid = new Grid(100,80);
+        this.gameEntityFactory = new GameEntityFactory();
+        this.gameEntities = gameEntityFactory.getGameEntities(grid, 8);
         this.collisionDetector = new CollisionDetector();
     }
 
     public void start(){
 
-        throw new UnsupportedOperationException();
+
+
     }
 }

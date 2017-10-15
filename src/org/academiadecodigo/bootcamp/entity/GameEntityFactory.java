@@ -35,7 +35,7 @@ public class GameEntityFactory {
 
         for (int i = 0; i < numCadets; i++) {
 
-            GridPosition position = new GridPosition(interval + i * (interval + Grid.CELL_SIZE), row);
+            GridPosition position = new GridPosition(interval + (i * (interval + Grid.CELL_SIZE)), row);
             codeCadets[i] = new CodeCadet(grid, position);
 
             if(i % 4 == 0) {

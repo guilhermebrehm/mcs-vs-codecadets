@@ -14,16 +14,16 @@ public class MC extends GameEntity {
     //Constructor
     public MC(Grid grid) {
         super.setGrid(grid);
-        mCPosition(grid);
+        super.setGridPosition(getPosition(grid));
     }
 
 
-    public void mCPosition(Grid grid) {
+    private GridPosition getPosition(Grid grid) {
 
         int col = (int)(Math.floor(grid.getWidth() / 2));
         int row = grid.getHeight();
 
-        super.setGridPosition(col,row);
+        return new GridPosition(col, row);
     }
 
     public void shoot() {
