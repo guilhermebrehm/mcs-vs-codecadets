@@ -20,4 +20,12 @@ public class GridPosition {
 
         throw new UnsupportedOperationException();
     }
+
+    public int getCol() {
+        return col;
+    }
+
+    public int getRow() {
+        return row;
+    }
 }

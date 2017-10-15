@@ -29,4 +29,5 @@ public abstract class GameEntity implements Movable {
     public Grid getGrid() {
         return grid;
     }
+
 }
