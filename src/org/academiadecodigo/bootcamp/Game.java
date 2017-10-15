@@ -10,9 +10,15 @@ import org.academiadecodigo.bootcamp.grid.Grid;
 public class Game {
 
     private Grid grid;
-    private GameEntityFactory gameEntityFactory;
     private GameEntity[] gameEntities;
     private CollisionDetector collisionDetector;
+
+    //Constructor
+    public Game() {
+        this.grid = new Grid(100,100);
+        this.gameEntities = GameEntityFactory.getGameEntities(grid);
+        this.collisionDetector = new CollisionDetector();
+    }
 
     public void start(){
 

@@ -10,5 +10,34 @@ public class Grid {
     private int cols;
     private int rows;
     private Rectangle rectangle;
+    public static int CELL_SIZE = 10;
+    private int width;
+    private int height;
+    private int padding = 10;
+
+    //Constructor
+    public Grid(int cols, int rows) {
+        this.cols = cols;
+        this.rows = rows;
+        this.width = cols * CELL_SIZE;
+        this.height = rows * CELL_SIZE;
+    }
+
+    public int colToX(int col){
+        return col * CELL_SIZE + padding;
+    }
+
+    public int rowToY(int row){
+        return row * CELL_SIZE + padding;
+    }
+
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
 
 }
