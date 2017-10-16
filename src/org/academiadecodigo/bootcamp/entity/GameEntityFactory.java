@@ -40,7 +40,7 @@ public class GameEntityFactory {
             int numCadetsThisRow = (i == numRows + 1) ? numCadets % 4 : 4;
 
             int horizontalInterval = (grid.getCols() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
-            int verticalInterval = (int) ((grid.getRows() - (numRows + grid.getRows() * .4)) / (numRows + 1));
+            int verticalInterval = (int) ((grid.getRows() - (numRows + grid.getRows() * .2)) / (numRows + 1));
 
             for (int j = 0; j < numCadetsThisRow; j++) {
 

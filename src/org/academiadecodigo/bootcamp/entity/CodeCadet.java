@@ -25,6 +25,7 @@ public class CodeCadet extends GameEntity implements Shootable {
         rectangle.setColor(Color.YELLOW);
         rectangle.fill();
 
+        directionCounter = 10;
         super.setDirection(Direction.RIGHT);
 
     }

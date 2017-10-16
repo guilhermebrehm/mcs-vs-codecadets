@@ -19,7 +19,7 @@ public class Game {
     public Game() {
         this.grid = new Grid(100,80);
         this.gameEntityFactory = new GameEntityFactory();
-        this.gameEntities = gameEntityFactory.getGameEntities(grid, 15);
+        this.gameEntities = gameEntityFactory.getGameEntities(grid, 83);
         this.collisionDetector = new CollisionDetector();
     }
 
@@ -41,7 +41,7 @@ public class Game {
             }
 
             try {
-                Thread.sleep(50);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
