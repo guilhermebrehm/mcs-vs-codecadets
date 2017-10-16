@@ -7,7 +7,5 @@ import org.academiadecodigo.bootcamp.grid.Direction;
  */
 public interface Movable {
 
-    Direction direction = null;
-
     void move();
 }

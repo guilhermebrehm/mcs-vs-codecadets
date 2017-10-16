@@ -3,6 +3,8 @@ package org.academiadecodigo.bootcamp.entity;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 
+import java.util.ArrayList;
+
 /**
  * Created by codecadet on 13/10/2017.
  */
@@ -29,25 +31,29 @@ public class GameEntityFactory {
 
     public CodeCadet[] getCodeCadets(int numCadets, Grid grid) {
 
-        CodeCadet[] codeCadets = new CodeCadet[numCadets];
+        ArrayList<CodeCadet> codeCadets= new ArrayList<>();
 
-        int numRows = numCadets / 4;
+        int numRows = (numCadets / 4);
 
-        for (int i = 1; i < numRows + 1; i++) {
+        for (int i = 1; i < numRows + 2; i++) {
 
-            int numCadetsThisRow = (i == numRows) ? numCadets % 4 : 4;
+            int numCadetsThisRow = (i == numRows + 1) ? numCadets % 4 : 4;
 
-            int interval = (grid.getCols() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
+            int horizontalInterval = (grid.getCols() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
+            int verticalInterval = (int) ((grid.getRows() - (numRows + grid.getRows() * .4)) / (numRows + 1));
 
             for (int j = 0; j < numCadetsThisRow; j++) {
 
-                GridPosition position = new GridPosition(interval + (j * (interval + 1)), i * 8);
+                GridPosition position = new GridPosition(horizontalInterval + (j * (horizontalInterval + 1)),
+                        i * verticalInterval,
+                        grid);
 
-                codeCadets[j] = new CodeCadet(grid, position);
+                codeCadets.add(new CodeCadet(grid, position));
             }
         }
 
-        return codeCadets;
+        return (CodeCadet[]) codeCadets.toArray();
+
     }
 
 }

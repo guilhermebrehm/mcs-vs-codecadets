@@ -31,9 +31,9 @@ public class MC extends GameEntity {
     private GridPosition getPosition(Grid grid) {
 
         int col = (int)(Math.floor(grid.getCols() / 2));
-        int row = grid.getRows();
+        int row = grid.getRows() - 1;
 
-        return new GridPosition(col, row);
+        return new GridPosition(col, row, grid);
     }
 
     public void shoot() {
@@ -44,6 +44,6 @@ public class MC extends GameEntity {
     @Override
     public void move() {
 
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
     }
 }

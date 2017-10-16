@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.entity;
 
+import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 
@@ -10,14 +11,12 @@ public abstract class GameEntity implements Movable {
 
     private GridPosition gridPosition;
     private Grid grid;
+    private Direction direction;
 
     public GridPosition getGridPosition() {
         return gridPosition;
     }
 
-    public void setGridPosition(int col,int row) {
-        this.gridPosition = new GridPosition(col,row);
-    }
     public void setGridPosition(GridPosition gridPosition) {
         this.gridPosition = gridPosition;
     }
@@ -30,4 +29,11 @@ public abstract class GameEntity implements Movable {
         return grid;
     }
 
+    public Direction getDirection() {
+        return direction;
+    }
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
 }
