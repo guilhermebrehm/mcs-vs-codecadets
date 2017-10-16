@@ -52,7 +52,7 @@ public class GameEntityFactory {
             }
         }
 
-        return (CodeCadet[]) codeCadets.toArray();
+        return codeCadets.toArray(new CodeCadet[numCadets]);
 
     }
 

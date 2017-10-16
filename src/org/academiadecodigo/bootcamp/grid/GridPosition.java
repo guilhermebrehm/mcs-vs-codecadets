@@ -42,7 +42,7 @@ public class GridPosition {
 
     private void moveUp() {
 
-        row = (row == 0) ? 0 : row - 1;
+        row = (row <= 1) ? 1 : row - 1;
     }
 
     public void moveDown() {
@@ -52,12 +52,12 @@ public class GridPosition {
 
     public void moveLeft() {
 
-        col = (col == 0) ? 0 : col - 1;
+        col = (col <= 1) ? 1 : col - 1;
     }
 
     public void moveRight() {
 
-        col = (col == grid.getCols()) ? grid.getCols() : col - 1;
+        col = (col == grid.getCols()) ? grid.getCols() : col + 1;
     }
 
     public int getCol() {

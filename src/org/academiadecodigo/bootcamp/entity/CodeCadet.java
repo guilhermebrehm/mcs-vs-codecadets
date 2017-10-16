@@ -38,7 +38,7 @@ public class CodeCadet extends GameEntity implements Shootable {
     @Override
     public void move() {
 
-        if(directionCounter % 8 == 0) {
+        if(directionCounter % 20 == 0) {
 
             directionSwitch();
         }

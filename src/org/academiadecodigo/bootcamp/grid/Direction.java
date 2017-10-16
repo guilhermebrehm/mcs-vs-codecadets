@@ -6,8 +6,8 @@ package org.academiadecodigo.bootcamp.grid;
 public enum Direction {
 
     UP,
-    DOWN,
     RIGHT,
+    DOWN,
     LEFT;
 
 }
