@@ -67,4 +67,9 @@ public class GridPosition {
     public int getRow() {
         return row;
     }
+
+    @Override
+    public boolean equals(GridPosition pos) {
+        return this.col == pos.getCol() && this.row == pos.getRow() ? true : false;
+    }
 }
