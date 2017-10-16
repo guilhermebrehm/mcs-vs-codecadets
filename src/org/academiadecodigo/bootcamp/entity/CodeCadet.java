@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.entity;
 
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -19,6 +20,7 @@ public class CodeCadet extends GameEntity implements Shootable {
         int x = grid.colToX(gridPosition.getCol());
         int y = grid.rowToY(gridPosition.getRow());
         rectangle = new Rectangle(x - Grid.PADDING, y - Grid.PADDING, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle.setColor(Color.YELLOW);
         rectangle.fill();
     }
 

@@ -22,7 +22,7 @@ public class Grid {
         this.width = cols * CELL_SIZE;
         this.height = rows * CELL_SIZE;
         rectangle = new Rectangle(PADDING, PADDING, width, height);
-        rectangle.draw();
+        rectangle.fill();
     }
 
     public int colToX(int col){

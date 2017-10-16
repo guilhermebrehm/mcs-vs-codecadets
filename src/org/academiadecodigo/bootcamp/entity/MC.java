@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.entity;
 
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -22,6 +23,7 @@ public class MC extends GameEntity {
         int y = grid.rowToY(getGridPosition().getRow()) - Grid.PADDING;
 
         rectangle = new Rectangle(x, y, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle.setColor(Color.WHITE);
         rectangle.fill();
     }
 

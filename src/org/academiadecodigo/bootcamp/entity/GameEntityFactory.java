@@ -8,15 +8,15 @@ import org.academiadecodigo.bootcamp.grid.GridPosition;
  */
 public class GameEntityFactory {
 
-    public GameEntity[] getGameEntities(Grid grid, int numRows) {
+    public GameEntity[] getGameEntities(Grid grid, int numCadets) {
 
-        GameEntity[] gameEntities = new GameEntity[numRows * 4 + 1 ];
+        GameEntity[] gameEntities = new GameEntity[numCadets + 1];
 
         gameEntities[0] = new MC(grid);
 
         int index = 1;
 
-        for (CodeCadet codeCadet : getCodeCadets(numRows, grid)) {
+        for (CodeCadet codeCadet : getCodeCadets(numCadets, grid)) {
 
             gameEntities[index] = codeCadet;
 
@@ -26,22 +26,26 @@ public class GameEntityFactory {
         return gameEntities;
     }
 
-    public CodeCadet[] getCodeCadets(int numRows, Grid grid) {
-        CodeCadet[] codeCadets = new CodeCadet[numRows * 4];
 
-        int interval = (grid.getCols() - (4)) / (4 + 1);
+    public CodeCadet[] getCodeCadets(int numCadets, Grid grid) {
 
-        for (int i = 2; i < numRows + 2; i++) {
+        CodeCadet[] codeCadets = new CodeCadet[numCadets];
 
-            for (int j = 0; j < 4; j++) {
+        int numRows = numCadets / 4;
+
+        for (int i = 1; i < numRows + 1; i++) {
+
+            int numCadetsThisRow = (i == numRows) ? numCadets % 4 : 4;
+
+            int interval = (grid.getCols() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
+
+            for (int j = 0; j < numCadetsThisRow; j++) {
 
                 GridPosition position = new GridPosition(interval + (j * (interval + 1)), i * 8);
 
                 codeCadets[j] = new CodeCadet(grid, position);
-
             }
         }
-
 
         return codeCadets;
     }
