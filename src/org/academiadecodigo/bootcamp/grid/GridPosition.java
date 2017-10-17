@@ -20,6 +20,8 @@ public class GridPosition {
 
     public void moveInDirection(Direction direction) {
 
+        if(direction == null) { return; }
+
         switch(direction) {
 
             case UP:
