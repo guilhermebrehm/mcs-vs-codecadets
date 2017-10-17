@@ -8,4 +8,6 @@ import org.academiadecodigo.bootcamp.grid.Direction;
 public interface Controllable {
 
     void setDirection(Direction direction);
+
+    void shoot();
 }

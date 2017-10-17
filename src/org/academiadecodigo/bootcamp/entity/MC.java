@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.entity;
 
+import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
@@ -41,7 +42,7 @@ public class MC extends GameEntity implements Controllable {
 
     public void shoot() {
 
-        throw new UnsupportedOperationException();
+        Game.gameEntities.add(new Bullet(this));
     }
 
     @Override

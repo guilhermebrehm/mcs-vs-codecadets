@@ -5,9 +5,13 @@ import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import sun.jvm.hotspot.memory.Space;
+
+import java.security.Key;
 
 import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_LEFT;
 import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_RIGHT;
+import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_SPACE;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -42,6 +46,10 @@ public class Keyboard implements KeyboardHandler{
                 controllable.setDirection(Direction.LEFT);
                 break;
 
+            case KEY_SPACE:
+                controllable.shoot();
+                break;
+
         }
 
     }
@@ -62,6 +70,10 @@ public class Keyboard implements KeyboardHandler{
         pressLeftArrow.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         pressLeftArrow.setKey(KeyboardEvent.KEY_LEFT);
 
+        KeyboardEvent pressSpace = new KeyboardEvent();
+        pressSpace.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        pressSpace.setKey(KEY_SPACE);
+
         KeyboardEvent releaseRightArrow = new KeyboardEvent();
         releaseRightArrow.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         releaseRightArrow.setKey(KEY_RIGHT);
@@ -74,6 +86,7 @@ public class Keyboard implements KeyboardHandler{
         keyboard.addEventListener(pressRightArrow);
         keyboard.addEventListener(releaseLeftArrow);
         keyboard.addEventListener(releaseRightArrow);
+        keyboard.addEventListener(pressSpace);
     }
 
 

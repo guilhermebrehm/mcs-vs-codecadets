@@ -7,7 +7,7 @@ import org.academiadecodigo.bootcamp.entity.GameEntity;
  */
 public class CollisionDetector {
 
-    private GameEntity[] gameEntities;
+    /*private GameEntity[] gameEntities;
     private Bullet bullet;
 
     public CollisionDetector(GameEntity[] gameEntities, Bullet bullet) {
@@ -25,6 +25,6 @@ public class CollisionDetector {
 
         }
 
-    }
+    }*/
 
 }

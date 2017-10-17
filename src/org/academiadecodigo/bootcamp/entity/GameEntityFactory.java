@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.entity;
 
+import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 
@@ -10,26 +11,19 @@ import java.util.ArrayList;
  */
 public class GameEntityFactory {
 
-    public GameEntity[] getGameEntities(Grid grid, int numCadets) {
+    public ArrayList<GameEntity> getGameEntities(Grid grid, int numCadets) {
 
-        GameEntity[] gameEntities = new GameEntity[numCadets + 1];
+        ArrayList<GameEntity> gameEntities = new ArrayList<>();
 
-        gameEntities[0] = new MC(grid);
+        gameEntities.add(new MC(grid));
 
-        int index = 1;
-
-        for (CodeCadet codeCadet : getCodeCadets(numCadets, grid)) {
-
-            gameEntities[index] = codeCadet;
-
-            index++;
-        }
+        gameEntities.addAll(getCodeCadets(numCadets,grid));
 
         return gameEntities;
     }
 
 
-    public CodeCadet[] getCodeCadets(int numCadets, Grid grid) {
+    public ArrayList<CodeCadet> getCodeCadets(int numCadets, Grid grid) {
 
         ArrayList<CodeCadet> codeCadets= new ArrayList<>();
 
@@ -52,7 +46,7 @@ public class GameEntityFactory {
             }
         }
 
-        return codeCadets.toArray(new CodeCadet[numCadets]);
+        return codeCadets;
 
     }
 

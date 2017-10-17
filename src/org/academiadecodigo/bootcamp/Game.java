@@ -6,13 +6,15 @@ import org.academiadecodigo.bootcamp.entity.GameEntityFactory;
 import org.academiadecodigo.bootcamp.entity.Movable;
 import org.academiadecodigo.bootcamp.grid.Grid;
 
+import java.util.ArrayList;
+
 /**
  * Created by codecadet on 13/10/2017.
  */
 public class Game {
 
     private Grid grid;
-    private GameEntity[] gameEntities;
+    public static ArrayList<GameEntity> gameEntities;
     private GameEntityFactory gameEntityFactory;
     private CollisionDetector collisionDetector;
     private Keyboard keyboard;
@@ -22,8 +24,8 @@ public class Game {
         this.grid = new Grid(100,80);
         this.gameEntityFactory = new GameEntityFactory();
         this.gameEntities = gameEntityFactory.getGameEntities(grid, 83);
-        this.collisionDetector = new CollisionDetector();
-        this.keyboard = new Keyboard((Controllable) gameEntities[0]);
+        //this.collisionDetector = new CollisionDetector();
+        this.keyboard = new Keyboard((Controllable) gameEntities.get(0));
     }
 
     public void start(){
