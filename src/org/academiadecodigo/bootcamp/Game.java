@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.bootcamp.entity.Controllable;
 import org.academiadecodigo.bootcamp.entity.GameEntity;
 import org.academiadecodigo.bootcamp.entity.GameEntityFactory;
 import org.academiadecodigo.bootcamp.entity.Movable;
@@ -14,6 +15,7 @@ public class Game {
     private GameEntity[] gameEntities;
     private GameEntityFactory gameEntityFactory;
     private CollisionDetector collisionDetector;
+    private Keyboard keyboard;
 
     //Constructor
     public Game() {
@@ -21,19 +23,13 @@ public class Game {
         this.gameEntityFactory = new GameEntityFactory();
         this.gameEntities = gameEntityFactory.getGameEntities(grid, 83);
         this.collisionDetector = new CollisionDetector();
+        this.keyboard = new Keyboard((Controllable) gameEntities[0]);
     }
 
     public void start(){
 
-        for(Movable movable : gameEntities) {
-
-                System.out.println(movable);
-
-            }
-
 
         while(true) {
-
 
             for(Movable movable : gameEntities) {
 
