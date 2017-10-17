@@ -9,7 +9,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 /**
  * Created by codecadet on 17/10/2017.
  */
-public class Bullet {
+public class Bullet implements Movable{
 
     //Properties
     private Rectangle rectangle;
@@ -26,6 +26,7 @@ public class Bullet {
     }
 
     //Methods
+    @Override
     public void move() {
 
         int initialX = this.gridPosition.getCol();
