@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.entity;
 
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -22,6 +23,7 @@ public class MC extends GameEntity {
         int y = grid.rowToY(getGridPosition().getRow()) - Grid.PADDING;
 
         rectangle = new Rectangle(x, y, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle.setColor(Color.WHITE);
         rectangle.fill();
     }
 
@@ -29,9 +31,9 @@ public class MC extends GameEntity {
     private GridPosition getPosition(Grid grid) {
 
         int col = (int)(Math.floor(grid.getCols() / 2));
-        int row = grid.getRows();
+        int row = grid.getRows() - 1;
 
-        return new GridPosition(col, row);
+        return new GridPosition(col, row, grid);
     }
 
     public void shoot() {
@@ -42,6 +44,6 @@ public class MC extends GameEntity {
     @Override
     public void move() {
 
-        throw new UnsupportedOperationException();
+        //throw new UnsupportedOperationException();
     }
 }

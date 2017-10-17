@@ -3,20 +3,22 @@ package org.academiadecodigo.bootcamp.entity;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 
+import java.util.ArrayList;
+
 /**
  * Created by codecadet on 13/10/2017.
  */
 public class GameEntityFactory {
 
-    public GameEntity[] getGameEntities(Grid grid, int numRows) {
+    public GameEntity[] getGameEntities(Grid grid, int numCadets) {
 
-        GameEntity[] gameEntities = new GameEntity[numRows * 4 + 1 ];
+        GameEntity[] gameEntities = new GameEntity[numCadets + 1];
 
         gameEntities[0] = new MC(grid);
 
         int index = 1;
 
-        for (CodeCadet codeCadet : getCodeCadets(numRows, grid)) {
+        for (CodeCadet codeCadet : getCodeCadets(numCadets, grid)) {
 
             gameEntities[index] = codeCadet;
 
@@ -26,24 +28,32 @@ public class GameEntityFactory {
         return gameEntities;
     }
 
-    public CodeCadet[] getCodeCadets(int numRows, Grid grid) {
-        CodeCadet[] codeCadets = new CodeCadet[numRows * 4];
 
-        int interval = (grid.getCols() - (4)) / (4 + 1);
+    public CodeCadet[] getCodeCadets(int numCadets, Grid grid) {
 
-        for (int i = 2; i < numRows + 2; i++) {
+        ArrayList<CodeCadet> codeCadets= new ArrayList<>();
 
-            for (int j = 0; j < 4; j++) {
+        int numRows = (numCadets / 4);
 
-                GridPosition position = new GridPosition(interval + (j * (interval + 1)), i * 8);
+        for (int i = 1; i < numRows + 2; i++) {
 
-                codeCadets[j] = new CodeCadet(grid, position);
+            int numCadetsThisRow = (i == numRows + 1) ? numCadets % 4 : 4;
 
+            int horizontalInterval = (grid.getCols() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
+            int verticalInterval = (int) ((grid.getRows() - (numRows + grid.getRows() * .2)) / (numRows + 1));
+
+            for (int j = 0; j < numCadetsThisRow; j++) {
+
+                GridPosition position = new GridPosition(horizontalInterval + (j * (horizontalInterval + 1)),
+                        i * verticalInterval,
+                        grid);
+
+                codeCadets.add(new CodeCadet(grid, position));
             }
         }
 
+        return codeCadets.toArray(new CodeCadet[numCadets]);
 
-        return codeCadets;
     }
 
 }

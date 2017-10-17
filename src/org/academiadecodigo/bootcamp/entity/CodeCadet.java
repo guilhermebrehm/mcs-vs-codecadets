@@ -1,7 +1,9 @@
 package org.academiadecodigo.bootcamp.entity;
 
+import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -11,6 +13,7 @@ public class CodeCadet extends GameEntity implements Shootable {
 
     private Rectangle rectangle;
     private boolean dead;
+    private int directionCounter;
 
     //Constructor
     public CodeCadet(Grid grid, GridPosition gridPosition) {
@@ -20,7 +23,12 @@ public class CodeCadet extends GameEntity implements Shootable {
         int x = grid.colToX(gridPosition.getCol());
         int y = grid.rowToY(gridPosition.getRow());
         rectangle = new Rectangle(x - Grid.PADDING, y - Grid.PADDING, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle.setColor(Color.YELLOW);
         rectangle.fill();
+
+        directionCounter = 10;
+        super.setDirection(Direction.RIGHT);
+
     }
 
     @Override
@@ -36,6 +44,24 @@ public class CodeCadet extends GameEntity implements Shootable {
     @Override
     public void move() {
 
-        throw new UnsupportedOperationException();
+        if(directionCounter % 20 == 0) {
+
+            directionSwitch();
+        }
+
+        directionCounter++;
+
+        int oldCol = getGridPosition().getCol();
+        int oldRow = getGridPosition().getRow();
+
+        getGridPosition().moveInDirection(getDirection());
+
+        rectangle.translate((getGridPosition().getCol() - oldCol) * Grid.CELL_SIZE,
+                (getGridPosition().getRow() - oldRow) * Grid.CELL_SIZE);
+    }
+
+    public void directionSwitch() {
+
+        super.setDirection(Direction.values()[(super.getDirection().ordinal() + 2) % 4]);
     }
 }
