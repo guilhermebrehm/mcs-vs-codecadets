@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.entity;
 
+import org.academiadecodigo.bootcamp.Game;
+import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -8,7 +10,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 /**
  * Created by codecadet on 13/10/2017.
  */
-public class MC extends GameEntity {
+public class MC extends GameEntity implements Controllable {
 
     //Properties
     private Rectangle rectangle;
@@ -21,6 +23,8 @@ public class MC extends GameEntity {
 
         int x = grid.colToX(getGridPosition().getCol()) - Grid.PADDING;
         int y = grid.rowToY(getGridPosition().getRow()) - Grid.PADDING;
+
+        setDirection(null);
 
         rectangle = new Rectangle(x, y, Grid.CELL_SIZE, Grid.CELL_SIZE);
         rectangle.setColor(Color.WHITE);
@@ -38,12 +42,23 @@ public class MC extends GameEntity {
 
     public void shoot() {
 
-        throw new UnsupportedOperationException();
+        Game.gameEntities.add(new Bullet(this));
     }
 
     @Override
     public void move() {
 
-        //throw new UnsupportedOperationException();
+        int oldCol = getGridPosition().getCol();
+        int oldRow = getGridPosition().getRow();
+
+        getGridPosition().moveInDirection(getDirection());
+
+        rectangle.translate((getGridPosition().getCol() - oldCol) * Grid.CELL_SIZE,
+                (getGridPosition().getRow() - oldRow) * Grid.CELL_SIZE);
+    }
+
+    @Override
+    public void setDirection(Direction direction) {
+        super.setDirection(direction);
     }
 }
