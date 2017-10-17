@@ -5,5 +5,5 @@ package org.academiadecodigo.bootcamp.entity;
  */
 public interface Shootable {
 
-    public void getShot();
+    void getShot();
 }

@@ -10,6 +10,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class CodeCadet extends GameEntity implements Shootable {
 
     private Rectangle rectangle;
+    private boolean dead;
 
     //Constructor
     public CodeCadet(Grid grid, GridPosition gridPosition) {
@@ -24,13 +25,17 @@ public class CodeCadet extends GameEntity implements Shootable {
 
     @Override
     public void getShot() {
+        rectangle.delete();
+        dead = true;
+    }
 
-        throw new UnsupportedOperationException();
+    public boolean isDead() {
+            return dead;
     }
 
     @Override
     public void move() {
 
-       throw new UnsupportedOperationException();
+        throw new UnsupportedOperationException();
     }
 }
