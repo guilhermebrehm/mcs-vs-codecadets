@@ -43,6 +43,7 @@ public class Bullet extends GameEntity implements Movable{
 
         this.rectangle.translate((finalX-initialX) * Grid.CELL_SIZE,(finalY-initialY) * Grid.CELL_SIZE);
 
+        // Delete rectangle if the bullet gets to the upper border
         if(initialY == 1) {
             delete();
         }
