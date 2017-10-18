@@ -9,9 +9,7 @@ import sun.jvm.hotspot.memory.Space;
 
 import java.security.Key;
 
-import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_LEFT;
-import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_RIGHT;
-import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_SPACE;
+import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.*;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -49,6 +47,9 @@ public class Keyboard implements KeyboardHandler{
             case KEY_SPACE:
                 controllable.shoot();
                 break;
+            case KEY_P:
+                //Game.start();
+                break;
 
         }
 
@@ -82,11 +83,16 @@ public class Keyboard implements KeyboardHandler{
         releaseLeftArrow.setKeyboardEventType(KeyboardEventType.KEY_RELEASED);
         releaseLeftArrow.setKey(KeyboardEvent.KEY_LEFT);
 
+        KeyboardEvent potato = new KeyboardEvent();
+        potato.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        potato.setKey(KEY_P);
+
         keyboard.addEventListener(pressLeftArrow);
         keyboard.addEventListener(pressRightArrow);
         keyboard.addEventListener(releaseLeftArrow);
         keyboard.addEventListener(releaseRightArrow);
         keyboard.addEventListener(pressSpace);
+        keyboard.addEventListener(potato);
     }
 
 

@@ -16,6 +16,7 @@ public class Game {
     private GameEntityFactory gameEntityFactory;
     private CollisionDetector collisionDetector;
     private Keyboard keyboard;
+    private boolean started = false;
 
     //Constructor
     public Game() {
@@ -56,4 +57,14 @@ public class Game {
 
 
     }
+
+    /*
+    public boolean initialScreen() {
+
+
+
+    }
+    */
+
+
 }
