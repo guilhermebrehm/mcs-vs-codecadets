@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.entity;
 
+import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 
 /**

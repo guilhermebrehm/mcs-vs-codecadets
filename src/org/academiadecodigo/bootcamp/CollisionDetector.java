@@ -11,20 +11,23 @@ import java.util.ArrayList;
  */
 public class CollisionDetector {
 
-    private ArrayList<Shootable> shootables;
+    private ArrayList<GameEntity> gameEntities;
     private Bullet bullet;
 
-    public CollisionDetector(ArrayList<Shootable> shootables, Bullet bullet) {
-        this.shootables = shootables;
+    public CollisionDetector(ArrayList<GameEntity> gameEntities, Bullet bullet) {
+        this.gameEntities = gameEntities;
         this.bullet = bullet;
     }
 
     public void check() {
 
-        for (Shootable shootable : shootables) {
+        for (GameEntity gameEntity : gameEntities) {
 
-            if(shootable.getGridPosition().equals(bullet.getGridPosition())) {
-                shootable.getShot();
+            if (gameEntity instanceof Shootable) {
+
+                if (gameEntity.getGridPosition().equals(bullet.getGridPosition())) {
+                    ((Shootable) gameEntity).getShot();
+                }
             }
 
         }

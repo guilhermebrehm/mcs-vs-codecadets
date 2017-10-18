@@ -17,8 +17,8 @@ public class CodeCadet extends GameEntity implements Shootable {
 
     //Constructor
     public CodeCadet(Grid grid, GridPosition gridPosition) {
-        super.setGrid(grid);
-        super.setGridPosition(gridPosition);
+        setGrid(grid);
+        setGridPosition(gridPosition);
 
         int x = grid.colToX(gridPosition.getCol());
         int y = grid.rowToY(gridPosition.getRow());
@@ -27,9 +27,15 @@ public class CodeCadet extends GameEntity implements Shootable {
         rectangle.fill();
 
         directionCounter = 10;
-        super.setDirection(Direction.RIGHT);
+        setDirection(Direction.RIGHT);
 
     }
+
+
+    public boolean isDead() {
+        return dead;
+    }
+
 
     @Override
     public void getShot() {
@@ -37,14 +43,14 @@ public class CodeCadet extends GameEntity implements Shootable {
         dead = true;
     }
 
-    public boolean isDead() {
-            return dead;
-    }
-
     @Override
     public void move() {
 
-        if(directionCounter % 20 == 0) {
+        if (dead) {
+            return;
+        }
+
+        if (directionCounter % 20 == 0) {
 
             directionSwitch();
         }
@@ -60,8 +66,8 @@ public class CodeCadet extends GameEntity implements Shootable {
                 (getGridPosition().getRow() - oldRow) * Grid.CELL_SIZE);
     }
 
-    public void directionSwitch() {
+    private void directionSwitch() {
 
-        super.setDirection(Direction.values()[(super.getDirection().ordinal() + 2) % 4]);
+        setDirection(Direction.values()[(getDirection().ordinal() + 2) % 4]);
     }
 }
