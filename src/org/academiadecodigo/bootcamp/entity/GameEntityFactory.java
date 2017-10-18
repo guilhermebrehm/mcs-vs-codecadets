@@ -11,21 +11,11 @@ import java.util.ArrayList;
  */
 public class GameEntityFactory {
 
-    public ArrayList<GameEntity> getGameEntities(Grid grid, int numCadets) {
+    public ArrayList<Movable> getMovables(int numCadets, Grid grid) {
 
-        ArrayList<GameEntity> gameEntities = new ArrayList<>();
+        ArrayList<Movable> codeCadets= new ArrayList<>();
 
-        gameEntities.add(new MC(grid));
-
-        gameEntities.addAll(getCodeCadets(numCadets,grid));
-
-        return gameEntities;
-    }
-
-
-    public ArrayList<CodeCadet> getCodeCadets(int numCadets, Grid grid) {
-
-        ArrayList<CodeCadet> codeCadets= new ArrayList<>();
+        codeCadets.add(new MC(grid));
 
         int numRows = (numCadets / 4);
 

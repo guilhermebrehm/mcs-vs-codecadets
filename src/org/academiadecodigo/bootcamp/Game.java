@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Game {
 
     private Grid grid;
-    public static ArrayList<GameEntity> gameEntities;
+    public static ArrayList<Movable> movables;
     private GameEntityFactory gameEntityFactory;
     private CollisionDetector collisionDetector;
     private Keyboard keyboard;
@@ -23,9 +23,9 @@ public class Game {
     public Game() {
         this.grid = new Grid(100,80);
         this.gameEntityFactory = new GameEntityFactory();
-        this.gameEntities = gameEntityFactory.getGameEntities(grid, 83);
+        this.movables = gameEntityFactory.getMovables(83, grid);
         //this.collisionDetector = new CollisionDetector();
-        this.keyboard = new Keyboard((Controllable) gameEntities.get(0));
+        this.keyboard = new Keyboard((Controllable) movables.get(0));
     }
 
     public void start(){
@@ -33,7 +33,7 @@ public class Game {
 
         while(true) {
 
-            for(Movable movable : gameEntities) {
+            for(Movable movable : movables) {
 
                 movable.move();
             }

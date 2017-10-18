@@ -18,6 +18,7 @@ public class MC extends GameEntity implements Controllable {
 
     //Constructor
     public MC(Grid grid) {
+        
         super.setGrid(grid);
         super.setGridPosition(getPosition(grid));
 
@@ -42,7 +43,7 @@ public class MC extends GameEntity implements Controllable {
 
     public void shoot() {
 
-        Game.gameEntities.add(new Bullet(this));
+        Game.movables.add(new Bullet(this));
     }
 
     @Override
