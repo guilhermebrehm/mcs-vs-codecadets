@@ -18,7 +18,7 @@ public class MC extends GameEntity implements Controllable {
 
     //Constructor
     public MC(Grid grid) {
-        
+
         super.setGrid(grid);
         super.setGridPosition(getPosition(grid));
 
