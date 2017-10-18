@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.Bullet;
-import org.academiadecodigo.bootcamp.entity.GameEntity;
 import org.academiadecodigo.bootcamp.entity.Shootable;
 
 import java.util.ArrayList;
@@ -11,23 +10,14 @@ import java.util.ArrayList;
  */
 public class CollisionDetector {
 
-    private ArrayList<GameEntity> gameEntities;
-    private Bullet bullet;
-
-    public CollisionDetector(ArrayList<GameEntity> gameEntities, Bullet bullet) {
-        this.gameEntities = gameEntities;
-        this.bullet = bullet;
-    }
+    private ArrayList<Bullet> bullets;
 
     public void check() {
 
-        for (GameEntity gameEntity : gameEntities) {
+        for (Shootable shootable : Game.shootables) {
 
-            if (gameEntity instanceof Shootable) {
-
-                if (gameEntity.getGridPosition().equals(bullet.getGridPosition())) {
-                    ((Shootable) gameEntity).getShot();
-                }
+            if (shootable.getGridPosition().equals(bullet.getGridPosition())) {
+                shootable.getShot();
             }
 
         }
