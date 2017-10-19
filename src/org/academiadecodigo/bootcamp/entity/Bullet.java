@@ -3,8 +3,7 @@ package org.academiadecodigo.bootcamp.entity;
 import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 17/10/2017.
@@ -17,8 +16,11 @@ public class Bullet extends GameEntity implements Movable {
     //Constructor
     public Bullet(GameEntity entity) {
 
-        setGridPosition(new GridPosition(entity.getGridPosition().getX(), entity.getGridPosition().getY() - Grid.CELL_SIZE, entity.getGrid()));
-        getGridPosition().setColor(Color.RED);
+        Picture picture = new Picture(entity.getGridPosition().getX(),
+                entity.getGridPosition().getY(), "images/potato.png");
+
+        setGridPosition(new GridPosition(entity.getGrid(), picture));
+        //getGridPosition().grow(-200, -200);
 
         direction = entity.getDirection();
     }

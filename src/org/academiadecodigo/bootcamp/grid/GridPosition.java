@@ -1,8 +1,7 @@
 package org.academiadecodigo.bootcamp.grid;
 
 
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.*;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -10,16 +9,29 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class GridPosition {
 
     private Grid grid;
-    private Rectangle rectangle;
+    private Shape shape;
 
     //Constructor
     public GridPosition(int x, int y, Grid grid) {
 
         this.grid = grid;
 
-        rectangle = new Rectangle(Grid.PADDING + x, Grid.PADDING + y, Grid.CELL_SIZE, Grid.CELL_SIZE);
-        rectangle.fill();
+        shape = new Rectangle(Grid.PADDING + x, Grid.PADDING + y, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        ((Rectangle) shape).fill();
     }
+
+    public GridPosition(Grid grid, Shape shape) {
+
+        if(!(shape instanceof Movable)) {
+            System.out.println("FUCK YOU RETARD WHAT THE FUCK YOU TRYNA DO?!?!!111!?!?! ..bitch");
+        }
+
+        this.grid = grid;
+
+        this.shape = shape;
+        shape.draw();
+    }
+
 
 
     public void moveInDirection(Direction direction) {
@@ -52,52 +64,52 @@ public class GridPosition {
 
         int yTranslate = (getY() <= Grid.PADDING) ? 0 : -1;
 
-        rectangle.translate(0, yTranslate);
+        ((Movable) shape).translate(0, yTranslate);
     }
 
     public void moveDown() {
 
         int yTranslate = (getMaxY() == grid.getHeight()) ? 0 : 1;
 
-        rectangle.translate(0, yTranslate);
+        ((Movable) shape).translate(0, yTranslate);
     }
 
     public void moveLeft() {
 
         int xTranslate = (getX() <= Grid.PADDING) ? 0 : -1;
 
-        rectangle.translate(xTranslate, 0);
+        ((Movable) shape).translate(xTranslate, 0);
     }
 
     public void moveRight() {
 
         int xTranslate = (getMaxX() == grid.getWidth() + Grid.PADDING) ? 0 : 1;
 
-        rectangle.translate(xTranslate, 0);
+        ((Movable) shape).translate(xTranslate, 0);
     }
 
     public int getX() {
-        return rectangle.getX();
+        return shape.getX();
     }
 
     public int getY() {
-        return rectangle.getY();
+        return shape.getY();
     }
 
     public int getWidth() {
-        return rectangle.getWidth();
+        return shape.getWidth();
     }
 
     public int getHeight() {
-        return rectangle.getHeight();
+        return shape.getHeight();
     }
 
     public int getMaxX() {
-        return rectangle.getX() + getWidth();
+        return shape.getX() + getWidth();
     }
 
     public int getMaxY() {
-        return rectangle.getY() + getHeight();
+        return shape.getY() + getHeight();
     }
 
     public boolean equals(GridPosition pos) {
@@ -105,11 +117,19 @@ public class GridPosition {
     }
 
     public void delete() {
-        rectangle.delete();
+        shape.delete();
     }
 
     public void setColor(Color color) {
-        rectangle.setColor(color);
+        ((Colorable) shape).setColor(color);
+    }
+
+    public void setShape(){
+        this.shape = shape;
+    }
+
+    public void grow(double v1, double v2) {
+        shape.grow(v1, v2);
     }
 
 

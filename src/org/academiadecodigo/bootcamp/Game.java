@@ -60,7 +60,7 @@ public class Game {
         this.grid = new Grid(1400, 900);
         this.gameEntityFactory = new GameEntityFactory();
 
-        ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(83, grid);
+        ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(20, grid);
         movables = new ArrayList<>(codeCadets);
         shootables = new ArrayList<>(codeCadets);
 

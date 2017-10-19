@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -24,8 +25,6 @@ public class MC extends GameEntity implements Controllable {
 
         setDirection(null);
 
-        getGridPosition().setColor(Color.WHITE);
-
         willShoot = false;
     }
 
@@ -33,9 +32,11 @@ public class MC extends GameEntity implements Controllable {
     private GridPosition getPosition(Grid grid) {
 
         int x = (int) (Math.floor(grid.getWidth() / 2));
-        int y = grid.getHeight() - Grid.CELL_SIZE;
+        int y = grid.getHeight() - 150;
 
-        return new GridPosition(x, y, grid);
+        Picture picture = new Picture(x, y, "images/pantoninho.png");
+
+        return new GridPosition(grid, picture);
     }
 
     public void shoot() {

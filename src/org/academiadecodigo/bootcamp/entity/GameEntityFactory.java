@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,7 @@ public class GameEntityFactory {
 
         ArrayList<CodeCadet> codeCadets= new ArrayList<>();
 
+
         int numRows = (numCadets / 4);
 
         for (int i = 1; i < numRows + 2; i++) {
@@ -28,11 +30,13 @@ public class GameEntityFactory {
 
             for (int j = 0; j < numCadetsThisRow; j++) {
 
-                GridPosition position = new GridPosition(horizontalInterval + (j * (horizontalInterval + 1)),
-                        i * verticalInterval,
-                        grid);
+                int x = horizontalInterval + (j * (horizontalInterval + 1));
+                int y = i * verticalInterval;
+
+                Picture picture = new Picture(x, y, "images/soldier.png");
+
+                GridPosition position = new GridPosition(grid, picture);
                 CodeCadet codeCadet = new CodeCadet(grid, position);
-                codeCadet.getGridPosition().setColor(Color.YELLOW);
 
                 codeCadets.add(codeCadet);
             }

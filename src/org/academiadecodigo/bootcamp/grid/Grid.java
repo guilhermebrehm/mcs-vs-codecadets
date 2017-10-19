@@ -8,7 +8,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Grid {
 
     private Rectangle rectangle;
-    public static int CELL_SIZE = 10;
+    public static int CELL_SIZE = 20;
     private int width;
     private int height;
     public static int PADDING = 10;
