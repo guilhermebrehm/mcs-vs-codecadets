@@ -20,9 +20,11 @@ public class GridPosition {
 
     public void moveInDirection(Direction direction) {
 
-        if(direction == null) { return; }
+        if (direction == null) {
+            return;
+        }
 
-        switch(direction) {
+        switch (direction) {
 
             case UP:
                 moveUp();
@@ -71,6 +73,6 @@ public class GridPosition {
     }
 
     public boolean equals(GridPosition pos) {
-        return this.col == pos.getCol() && this.row == pos.getRow() ? true : false;
+        return this.col == pos.getCol() && this.row == pos.getRow();
     }
 }

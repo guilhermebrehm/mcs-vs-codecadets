@@ -7,12 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        /*
         Game game = new Game();
 
-        game.initialScreen();
-        */
-
         new InitialScreen();
+        game.start();
+
+        //TODO: MISSILE
     }
 }

@@ -25,11 +25,11 @@ public class Grid {
         rectangle.fill();
     }
 
-    public int colToX(int col){
+    public int colToX(int col) {
         return col * CELL_SIZE + PADDING;
     }
 
-    public int rowToY(int row){
+    public int rowToY(int row) {
         return row * CELL_SIZE + PADDING;
     }
 
