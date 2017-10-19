@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.util.ArrayList;
 
@@ -11,15 +12,16 @@ import java.util.ArrayList;
 public class Game {
 
     private Grid grid;
-    public static ArrayList<Movable> movables;
-    public static ArrayList<Shootable> shootables;
+    private ArrayList<Movable> movables;
+    private ArrayList<Shootable> shootables;
     private GameEntityFactory gameEntityFactory;
-    private CollisionDetector collisionDetector;
+    public static CollisionDetector collisionDetector;
     private Keyboard keyboard;
 
     //Constructor
     public Game() {
-        this.grid = new Grid(100,80);
+
+        this.grid = new Grid(100, 80);
         this.gameEntityFactory = new GameEntityFactory();
 
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(83, grid);
@@ -28,24 +30,22 @@ public class Game {
 
         MC mc = new MC(grid);
         movables.add(mc);
-        //this.collisionDetector = new CollisionDetector();
+        collisionDetector = new CollisionDetector(movables, shootables);
         this.keyboard = new Keyboard(mc);
     }
 
-    public void start(){
+    public void start() {
 
+        while (true) {
 
-        while(true) {
-
-            for(Movable movable : movables) {
+            for (Movable movable : movables) {
 
                 movable.move();
             }
 
-            for(Shootable shootable : shootables) {
+            System.out.println(movables.size());
 
-                //Collision detecotr checkskjfoaifhoiw
-            }
+            collisionDetector.check();
 
             try {
                 Thread.sleep(100);

@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp.entity;
 
-import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 
 /**
@@ -9,5 +8,8 @@ import org.academiadecodigo.bootcamp.grid.GridPosition;
 public interface Shootable {
 
     void getShot();
+
+    boolean isDead();
+
     GridPosition getGridPosition();
 }

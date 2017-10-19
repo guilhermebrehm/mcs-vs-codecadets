@@ -29,18 +29,18 @@ public class CodeCadet extends GameEntity implements Shootable {
         directionCounter = 10;
         setDirection(Direction.RIGHT);
 
+        dead = false;
     }
-
-
-    public boolean isDead() {
-        return dead;
-    }
-
 
     @Override
     public void getShot() {
         rectangle.delete();
         dead = true;
+    }
+
+    @Override
+    public boolean isDead() {
+        return dead;
     }
 
     @Override
@@ -57,13 +57,16 @@ public class CodeCadet extends GameEntity implements Shootable {
 
         directionCounter++;
 
-        int oldCol = getGridPosition().getCol();
-        int oldRow = getGridPosition().getRow();
+        int initialX = getGridPosition().getCol();
+        int initialY = getGridPosition().getRow();
 
         getGridPosition().moveInDirection(getDirection());
 
-        rectangle.translate((getGridPosition().getCol() - oldCol) * Grid.CELL_SIZE,
-                (getGridPosition().getRow() - oldRow) * Grid.CELL_SIZE);
+        int finalX = getGridPosition().getCol();
+        int finalY = getGridPosition().getRow();
+
+        this.rectangle.translate((finalX - initialX) * Grid.CELL_SIZE, (finalY - initialY) * Grid.CELL_SIZE);
+
     }
 
     private void directionSwitch() {

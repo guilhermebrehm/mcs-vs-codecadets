@@ -14,6 +14,7 @@ public class MC extends GameEntity implements Controllable {
 
     //Properties
     private Rectangle rectangle;
+    private boolean willShoot;
 
 
     //Constructor
@@ -30,12 +31,14 @@ public class MC extends GameEntity implements Controllable {
         rectangle = new Rectangle(x, y, Grid.CELL_SIZE, Grid.CELL_SIZE);
         rectangle.setColor(Color.WHITE);
         rectangle.fill();
+
+        willShoot = false;
     }
 
 
     private GridPosition getPosition(Grid grid) {
 
-        int col = (int)(Math.floor(grid.getCols() / 2));
+        int col = (int) (Math.floor(grid.getCols() / 2));
         int row = grid.getRows() - 1;
 
         return new GridPosition(col, row, grid);
@@ -43,11 +46,16 @@ public class MC extends GameEntity implements Controllable {
 
     public void shoot() {
 
-        Game.movables.add(new Bullet(this));
+        willShoot = true;
     }
 
     @Override
     public void move() {
+
+        if (willShoot) {
+            willShoot = false;
+            Game.collisionDetector.addBullet(new Bullet(this));
+        }
 
         int oldCol = getGridPosition().getCol();
         int oldRow = getGridPosition().getRow();

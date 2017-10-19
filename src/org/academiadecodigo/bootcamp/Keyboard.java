@@ -16,7 +16,7 @@ import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.KEY_SPA
 /**
  * Created by codecadet on 13/10/2017.
  */
-public class Keyboard implements KeyboardHandler{
+public class Keyboard implements KeyboardHandler {
 
     private org.academiadecodigo.simplegraphics.keyboard.Keyboard keyboard;
     private Controllable controllable;
@@ -31,7 +31,6 @@ public class Keyboard implements KeyboardHandler{
     public void setControllable(Controllable controllable) {
         this.controllable = controllable;
     }
-
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
