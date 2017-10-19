@@ -2,7 +2,8 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
+import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.util.ArrayList;
 
@@ -16,26 +17,23 @@ public class Game {
     private ArrayList<Shootable> shootables;
     private GameEntityFactory gameEntityFactory;
     public static CollisionDetector collisionDetector;
-    private Keyboard keyboard;
     private InitialScreen initialScreen;
+    private KeyboardHandler kBH;
 
     //Constructor
     public Game() {
 
-        this.grid = new Grid(100, 80);
-        this.gameEntityFactory = new GameEntityFactory();
+        kBH = new InitialScreenKeyboard(this);
 
-        ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(83, grid);
-        movables = new ArrayList<>(codeCadets);
-        shootables = new ArrayList<>(codeCadets);
+        initialScreen = new InitialScreen();
+        initialScreen.show();
 
-        MC mc = new MC(grid);
-        movables.add(mc);
-        collisionDetector = new CollisionDetector(movables, shootables);
-        this.keyboard = new Keyboard(mc);
+
     }
 
     public void start() {
+
+        init();
 
         while (true) {
 
@@ -44,7 +42,7 @@ public class Game {
                 movable.move();
             }
 
-            System.out.println(movables.size());
+            //System.out.println(movables.size());
 
             collisionDetector.check();
 
@@ -58,5 +56,23 @@ public class Game {
 
     }
 
+    public void init() {
 
+        this.grid = new Grid(100, 80);
+        this.gameEntityFactory = new GameEntityFactory();
+
+        System.out.println("COMCECEI");
+        ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(83, grid);
+        movables = new ArrayList<>(codeCadets);
+        shootables = new ArrayList<>(codeCadets);
+
+        MC mc = new MC(grid);
+        movables.add(mc);
+        collisionDetector = new CollisionDetector(movables, shootables);
+        kBH = new GameKeyboard(mc);
+    }
+
+    public InitialScreen getInitialScreen() {
+        return initialScreen;
+    }
 }

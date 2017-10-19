@@ -9,8 +9,6 @@ public class Main {
 
         Game game = new Game();
 
-        new InitialScreen();
-        game.start();
 
         //TODO: MISSILE
     }

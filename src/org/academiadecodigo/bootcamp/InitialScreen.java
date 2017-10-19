@@ -11,16 +11,20 @@ public class InitialScreen {
     private Picture background;
     private Picture letters;
     private boolean drawn = false;
+    private boolean notStarted = true;
 
     //Constructor
     public InitialScreen() {
-        background = new Picture(10,10,"logo.png");
+        background = new Picture(10, 10, "logo.png");
         background.draw();
-        letters = new Picture(10,10,"insert.png");
-        letters.grow(-700,-20);
-        letters.translate(-600,0);
+        letters = new Picture(10, 10, "insert.png");
+        letters.grow(-700, -20);
+        letters.translate(-600, 0);
+    }
 
-        while(true) {
+    public void show() {
+
+        while (notStarted) {
             try {
                 if (drawn) {
                     letters.delete();
@@ -35,5 +39,16 @@ public class InitialScreen {
                 System.out.println("deu merda");
             }
         }
+
+        System.out.println("delete");
+        background.delete();
+        letters.delete();
     }
+
+
+    public void stop() {
+        System.out.println("stop");
+        notStarted = false;
+    }
+
 }
