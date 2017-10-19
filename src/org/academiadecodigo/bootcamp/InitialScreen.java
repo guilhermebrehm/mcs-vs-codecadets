@@ -34,7 +34,6 @@ public class InitialScreen {
             } catch (InterruptedException e) {
                 System.out.println("deu merda");
             }
-
         }
     }
 }

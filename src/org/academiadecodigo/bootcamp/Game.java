@@ -16,7 +16,7 @@ public class Game {
     private GameEntityFactory gameEntityFactory;
     private CollisionDetector collisionDetector;
     private Keyboard keyboard;
-    private boolean started = false;
+    private InitialScreen initialScreen;
 
     //Constructor
     public Game() {
@@ -34,7 +34,6 @@ public class Game {
     }
 
     public void start(){
-
 
         while(true) {
 
