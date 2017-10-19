@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.Controllable;
 import org.academiadecodigo.bootcamp.grid.Direction;
+import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
@@ -14,15 +15,15 @@ import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.*;
 /**
  * Created by codecadet on 13/10/2017.
  */
-public class Keyboard implements KeyboardHandler {
+public class GameKeyboard implements KeyboardHandler {
 
-    private org.academiadecodigo.simplegraphics.keyboard.Keyboard keyboard;
+    private Keyboard keyboard;
     private Controllable controllable;
 
-    public Keyboard(Controllable controllable) {
+    public GameKeyboard(Controllable controllable) {
 
         this.controllable = controllable;
-        keyboard = new org.academiadecodigo.simplegraphics.keyboard.Keyboard(this);
+        keyboard = new Keyboard(this);
         registerListeners();
     }
 
@@ -45,9 +46,6 @@ public class Keyboard implements KeyboardHandler {
 
             case KEY_SPACE:
                 controllable.shoot();
-                break;
-            case KEY_P:
-                //Game.start();
                 break;
 
         }
