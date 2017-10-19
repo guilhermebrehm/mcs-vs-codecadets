@@ -13,7 +13,6 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class MC extends GameEntity implements Controllable {
 
     //Properties
-    private Rectangle rectangle;
     private boolean willShoot;
 
 
@@ -23,14 +22,9 @@ public class MC extends GameEntity implements Controllable {
         super.setGrid(grid);
         super.setGridPosition(getPosition(grid));
 
-        int x = grid.colToX(getGridPosition().getCol()) - Grid.PADDING;
-        int y = grid.rowToY(getGridPosition().getRow()) - Grid.PADDING;
-
         setDirection(null);
 
-        rectangle = new Rectangle(x, y, Grid.CELL_SIZE, Grid.CELL_SIZE);
-        rectangle.setColor(Color.WHITE);
-        rectangle.fill();
+        getGridPosition().setColor(Color.WHITE);
 
         willShoot = false;
     }
@@ -38,10 +32,10 @@ public class MC extends GameEntity implements Controllable {
 
     private GridPosition getPosition(Grid grid) {
 
-        int col = (int) (Math.floor(grid.getCols() / 2));
-        int row = grid.getRows() - 1;
+        int x = (int) (Math.floor(grid.getWidth() / 2));
+        int y = grid.getHeight() - Grid.CELL_SIZE;
 
-        return new GridPosition(col, row, grid);
+        return new GridPosition(x, y, grid);
     }
 
     public void shoot() {
@@ -57,13 +51,8 @@ public class MC extends GameEntity implements Controllable {
             Game.collisionDetector.addBullet(new Bullet(this));
         }
 
-        int oldCol = getGridPosition().getCol();
-        int oldRow = getGridPosition().getRow();
-
         getGridPosition().moveInDirection(getDirection());
 
-        rectangle.translate((getGridPosition().getCol() - oldCol) * Grid.CELL_SIZE,
-                (getGridPosition().getRow() - oldRow) * Grid.CELL_SIZE);
     }
 
     @Override

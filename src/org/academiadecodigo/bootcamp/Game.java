@@ -22,7 +22,7 @@ public class Game {
     //Constructor
     public Game() {
 
-        this.grid = new Grid(100, 80);
+        this.grid = new Grid(1400, 900);
         this.gameEntityFactory = new GameEntityFactory();
 
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(83, grid);
@@ -49,7 +49,7 @@ public class Game {
             collisionDetector.check();
 
             try {
-                Thread.sleep(100);
+                Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

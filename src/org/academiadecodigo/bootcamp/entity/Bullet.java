@@ -12,22 +12,13 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Bullet extends GameEntity implements Movable {
 
     //Properties
-    private Rectangle rectangle;
     private Direction direction;
 
     //Constructor
     public Bullet(GameEntity entity) {
 
-        this.rectangle = new Rectangle(entity.getGridPosition().getCol() * Grid.CELL_SIZE,
-                (entity.getGridPosition().getRow() - 1) * Grid.CELL_SIZE,
-                Grid.CELL_SIZE, Grid.CELL_SIZE);
-
-        this.rectangle.setColor(Color.RED);
-        this.rectangle.fill();
-
-        setGridPosition(new GridPosition(entity.getGridPosition().getCol(),
-                entity.getGridPosition().getRow() - 1,
-                entity.getGrid()));
+        setGridPosition(new GridPosition(entity.getGridPosition().getX(), entity.getGridPosition().getY() - Grid.CELL_SIZE, entity.getGrid()));
+        getGridPosition().setColor(Color.RED);
 
         direction = entity.getDirection();
     }
@@ -36,25 +27,14 @@ public class Bullet extends GameEntity implements Movable {
     @Override
     public void move() {
 
-        int initialX = getGridPosition().getCol();
-        int initialY = getGridPosition().getRow();
-
         getGridPosition().moveInDirection(Direction.UP);
         getGridPosition().moveInDirection(direction);
 
-        int finalX = getGridPosition().getCol();
-        int finalY = getGridPosition().getRow();
-
-        this.rectangle.translate((finalX - initialX) * Grid.CELL_SIZE, (finalY - initialY) * Grid.CELL_SIZE);
-
-        // Delete rectangle if the bullet gets to the upper border
-        if (initialY <= 1) {
-            delete();
-        }
+        //TODO: Delete rectangle if the bullet gets to the upper border
     }
 
     public void delete() {
-        rectangle.delete();
+        getGridPosition().delete();
     }
 
 }

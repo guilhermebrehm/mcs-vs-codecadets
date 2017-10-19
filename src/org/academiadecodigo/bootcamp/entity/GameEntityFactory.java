@@ -4,6 +4,7 @@ import com.sun.tools.javac.jvm.Code;
 import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 
 import java.util.ArrayList;
 
@@ -22,16 +23,18 @@ public class GameEntityFactory {
 
             int numCadetsThisRow = (i == numRows + 1) ? numCadets % 4 : 4;
 
-            int horizontalInterval = (grid.getCols() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
-            int verticalInterval = (int) ((grid.getRows() - (numRows + grid.getRows() * .2)) / (numRows + 1));
+            int horizontalInterval = (grid.getWidth() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
+            int verticalInterval = (int) ((grid.getHeight() - (numRows + grid.getHeight() * .2)) / (numRows + 1));
 
             for (int j = 0; j < numCadetsThisRow; j++) {
 
                 GridPosition position = new GridPosition(horizontalInterval + (j * (horizontalInterval + 1)),
                         i * verticalInterval,
                         grid);
+                CodeCadet codeCadet = new CodeCadet(grid, position);
+                codeCadet.getGridPosition().setColor(Color.YELLOW);
 
-                codeCadets.add(new CodeCadet(grid, position));
+                codeCadets.add(codeCadet);
             }
         }
 

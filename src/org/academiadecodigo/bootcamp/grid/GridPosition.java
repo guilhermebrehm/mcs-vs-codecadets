@@ -1,20 +1,38 @@
 package org.academiadecodigo.bootcamp.grid;
 
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+
 /**
  * Created by codecadet on 13/10/2017.
  */
 public class GridPosition {
 
-    private int col;
-    private int row;
+    private int x;
+    private int y;
     private Grid grid;
+    private Rectangle rectangle;
 
     //Constructor
-    public GridPosition(int col, int row, Grid grid) {
-        this.col = col;
-        this.row = row;
+    public GridPosition(int x, int y, int width, int height, Grid grid) {
+        this.x = x;
+        this.y = y;
         this.grid = grid;
+
+        rectangle = new Rectangle(Grid.PADDING + x, Grid.PADDING + y, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle.fill();
+    }
+
+    public GridPosition(int x, int y, Grid grid) {
+
+        this.x = x;
+        this.y = y;
+
+        this.grid = grid;
+
+        rectangle = new Rectangle(Grid.PADDING + x, Grid.PADDING + y, Grid.CELL_SIZE, Grid.CELL_SIZE);
+        rectangle.fill();
     }
 
 
@@ -46,33 +64,55 @@ public class GridPosition {
 
     private void moveUp() {
 
-        row = (row <= 1) ? 1 : row - 1;
+        int initialY = y;
+        y = (y <= 1) ? 1 : y - 1;
+
+        rectangle.translate(0, y - initialY);
     }
 
     public void moveDown() {
 
-        row = (row == grid.getRows()) ? grid.getRows() : row + 1;
+        int initialY = y;
+        y = (y == grid.getHeight()) ? grid.getHeight() : y + 1;
+
+        rectangle.translate(0, y - initialY);
     }
 
     public void moveLeft() {
 
-        col = (col <= 1) ? 1 : col - 1;
+        int initialX = x;
+        x = (x <= 1) ? 1 : x - 1;
+
+        rectangle.translate(x - initialX, 0);
     }
 
     public void moveRight() {
 
-        col = (col == grid.getCols()) ? grid.getCols() : col + 1;
+        int initialX = x;
+        x = (x == grid.getWidth()) ? grid.getWidth() : x + 1;
+
+        rectangle.translate(x - initialX, 0);
     }
 
-    public int getCol() {
-        return col;
+    public int getX() {
+        return rectangle.getX();
     }
 
-    public int getRow() {
-        return row;
+    public int getY() {
+        return rectangle.getY();
     }
 
     public boolean equals(GridPosition pos) {
-        return this.col == pos.getCol() && this.row == pos.getRow();
+        return getX() == pos.getX() && getY() == pos.getY();
     }
+
+    public void delete() {
+        rectangle.delete();
+    }
+
+    public void setColor(Color color) {
+        rectangle.setColor(color);
+    }
+
+
 }
