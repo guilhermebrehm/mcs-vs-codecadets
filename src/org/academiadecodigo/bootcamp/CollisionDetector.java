@@ -35,11 +35,25 @@ public class CollisionDetector {
 
             for (Shootable shootable : shootables) {
 
-                if (shootable.getGridPosition().equals(bullet.getGridPosition())) {
+                int xMin = shootable.getGridPosition().getX();
+                int yMin = shootable.getGridPosition().getY();
+
+                int xMax = shootable.getGridPosition().getMaxX();
+                int yMax = shootable.getGridPosition().getMaxY();
+
+                int bulletX = bullet.getGridPosition().getX();
+                int bulletY = bullet.getGridPosition().getY();
+
+                int bulletMaxX = bullet.getGridPosition().getMaxX();
+                int bulletMaxY = bullet.getGridPosition().getMaxY();
+
+                if ((bulletX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
+                        (bulletMaxX > xMin && bulletMaxX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax) ||
+                                (bulletMaxX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
+                                (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)){
                     shootablesToBeShot.add(shootable);
                     bulletsToBeRemoved.add(bullet);
                 }
-
             }
         }
 

@@ -43,7 +43,7 @@ public class CodeCadet extends GameEntity implements Shootable {
             return;
         }
 
-        if (directionCounter % 400 == 0) {
+        if (directionCounter % 100 == 0) {
 
             directionSwitch();
         }

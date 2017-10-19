@@ -9,25 +9,11 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class GridPosition {
 
-    private int x;
-    private int y;
     private Grid grid;
     private Rectangle rectangle;
 
     //Constructor
-    public GridPosition(int x, int y, int width, int height, Grid grid) {
-        this.x = x;
-        this.y = y;
-        this.grid = grid;
-
-        rectangle = new Rectangle(Grid.PADDING + x, Grid.PADDING + y, Grid.CELL_SIZE, Grid.CELL_SIZE);
-        rectangle.fill();
-    }
-
     public GridPosition(int x, int y, Grid grid) {
-
-        this.x = x;
-        this.y = y;
 
         this.grid = grid;
 
@@ -64,34 +50,30 @@ public class GridPosition {
 
     private void moveUp() {
 
-        int initialY = y;
-        y = (y <= 1) ? 1 : y - 1;
+        int yTranslate = (getY() <= Grid.PADDING) ? 0 : -1;
 
-        rectangle.translate(0, y - initialY);
+        rectangle.translate(0, yTranslate);
     }
 
     public void moveDown() {
 
-        int initialY = y;
-        y = (y == grid.getHeight()) ? grid.getHeight() : y + 1;
+        int yTranslate = (getMaxY() == grid.getHeight()) ? 0 : 1;
 
-        rectangle.translate(0, y - initialY);
+        rectangle.translate(0, yTranslate);
     }
 
     public void moveLeft() {
 
-        int initialX = x;
-        x = (x <= 1) ? 1 : x - 1;
+        int xTranslate = (getX() <= Grid.PADDING) ? 0 : -1;
 
-        rectangle.translate(x - initialX, 0);
+        rectangle.translate(xTranslate, 0);
     }
 
     public void moveRight() {
 
-        int initialX = x;
-        x = (x == grid.getWidth()) ? grid.getWidth() : x + 1;
+        int xTranslate = (getMaxX() == grid.getWidth() + Grid.PADDING) ? 0 : 1;
 
-        rectangle.translate(x - initialX, 0);
+        rectangle.translate(xTranslate, 0);
     }
 
     public int getX() {
@@ -100,6 +82,22 @@ public class GridPosition {
 
     public int getY() {
         return rectangle.getY();
+    }
+
+    public int getWidth() {
+        return rectangle.getWidth();
+    }
+
+    public int getHeight() {
+        return rectangle.getHeight();
+    }
+
+    public int getMaxX() {
+        return rectangle.getX() + getWidth();
+    }
+
+    public int getMaxY() {
+        return rectangle.getY() + getHeight();
     }
 
     public boolean equals(GridPosition pos) {
