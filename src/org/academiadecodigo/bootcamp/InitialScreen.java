@@ -10,6 +10,7 @@ public class InitialScreen {
     //Properties
     private Picture background;
     private Picture letters;
+    private boolean drawn = false;
 
     //Constructor
     public InitialScreen() {
@@ -17,7 +18,23 @@ public class InitialScreen {
         background.draw();
         letters = new Picture(10,10,"insert.png");
         letters.grow(-700,-20);
-        letters.translate(-550,650);
-        letters.draw();
+        letters.translate(-600,0);
+
+        while(true) {
+            try {
+                if (drawn) {
+                    letters.delete();
+                    drawn = false;
+                    Thread.sleep(750);
+                } else {
+                    letters.draw();
+                    drawn = true;
+                    Thread.sleep(750);
+                }
+            } catch (InterruptedException e) {
+                System.out.println("deu merda");
+            }
+
+        }
     }
 }
