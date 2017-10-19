@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.simplegraphics.graphics.Canvas;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
@@ -12,14 +14,16 @@ public class InitialScreen {
     private Picture letters;
     private boolean drawn = false;
     private boolean notStarted = true;
+    private Game game;
 
     //Constructor
-    public InitialScreen() {
+    public InitialScreen(Game game) {
         background = new Picture(10, 10, "logo.png");
         background.draw();
         letters = new Picture(10, 10, "insert.png");
         letters.grow(-700, -20);
         letters.translate(-600, 0);
+        this.game = game;
     }
 
     public void show() {
@@ -36,18 +40,20 @@ public class InitialScreen {
                     Thread.sleep(750);
                 }
             } catch (InterruptedException e) {
-                System.out.println("deu merda");
+                System.out.println(e.getMessage());
             }
         }
 
-        System.out.println("delete");
-        background.delete();
         letters.delete();
+        background.delete();
+        System.out.println(Canvas.getInstance().getShapes().size());
+
+        game.start();
+
     }
 
 
     public void stop() {
-        System.out.println("stop");
         notStarted = false;
     }
 

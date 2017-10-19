@@ -25,7 +25,7 @@ public class Game {
 
         kBH = new InitialScreenKeyboard(this);
 
-        initialScreen = new InitialScreen();
+        initialScreen = new InitialScreen(this);
         initialScreen.show();
 
 
@@ -42,9 +42,10 @@ public class Game {
                 movable.move();
             }
 
-            //System.out.println(movables.size());
+            System.out.println(movables.size());
 
             collisionDetector.check();
+
 
             try {
                 Thread.sleep(100);
@@ -52,8 +53,6 @@ public class Game {
                 e.printStackTrace();
             }
         }
-
-
     }
 
     public void init() {
@@ -61,7 +60,6 @@ public class Game {
         this.grid = new Grid(100, 80);
         this.gameEntityFactory = new GameEntityFactory();
 
-        System.out.println("COMCECEI");
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(83, grid);
         movables = new ArrayList<>(codeCadets);
         shootables = new ArrayList<>(codeCadets);

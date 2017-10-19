@@ -32,12 +32,9 @@ public class InitialScreenKeyboard implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        switch (keyboardEvent.getKey()) {
+        if (keyboardEvent.getKey() == KEY_P) {
 
-            case KEY_P:
-                game.getInitialScreen().stop();
-                game.start();
-                break;
+            game.getInitialScreen().stop();
         }
 
     }
