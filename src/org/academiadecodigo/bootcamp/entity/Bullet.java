@@ -16,20 +16,35 @@ public class Bullet extends GameEntity implements Movable {
     //Constructor
     public Bullet(GameEntity entity) {
 
-        Picture picture = new Picture(entity.getGridPosition().getX(),
-                entity.getGridPosition().getY(), "images/potato.png");
+        setOpposite(entity.isOpposite());
+        System.out.println(isOpposite());
+
+        int x = entity.getGridPosition().getX() + entity.getGridPosition().getWidth()/2;
+        int y = entity.getGridPosition().getY() - 40;
+
+        if(isOpposite()) {
+            y = entity.getGridPosition().getY() + 40;
+        }
+
+        Picture picture = new Picture(x,
+                y, "images/potato.png");
 
         setGridPosition(new GridPosition(entity.getGrid(), picture));
-        //getGridPosition().grow(-200, -200);
 
         direction = entity.getDirection();
+        System.out.println("sai");
     }
 
     //Methods
     @Override
     public void move() {
 
-        getGridPosition().moveInDirection(Direction.UP);
+        if(isOpposite()){
+            getGridPosition().moveInDirection(Direction.DOWN);
+        } else {
+            getGridPosition().moveInDirection(Direction.UP);
+        }
+
         getGridPosition().moveInDirection(direction);
 
 

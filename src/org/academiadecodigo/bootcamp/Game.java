@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.util.ArrayList;
@@ -17,6 +16,7 @@ public class Game {
     public static CollisionDetector collisionDetector;
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
+    private KeyboardHandler kBH1;
     public static int NUM_LEVELS = 2;
     private boolean twoPlayers;
 
@@ -25,10 +25,10 @@ public class Game {
 
         kBH = new InitialScreenKeyboard(this);
 
+        this.twoPlayers = twoPlayers;
         initialScreen = new InitialScreen(this);
         initialScreen.show();
 
-        this.twoPlayers = twoPlayers;
     }
 
     public void start() {
@@ -85,7 +85,7 @@ public class Game {
         MC mc = new MC(grid);
         movables.add(mc);
         collisionDetector = new CollisionDetector(movables, shootables, mc);
-        kBH = new GameKeyboard(mc);
+        kBH = new OnePlayerKeyboard(mc);
 
     }
 
@@ -94,12 +94,29 @@ public class Game {
         ArrayList<Shootable> shootables = new ArrayList<>();
         movables = new ArrayList<>();
         MC mc = new MC(grid);
-        MC mc2 = new MC(grid);
+        MC mc2 = new MC(grid, true);
         movables.add(mc);
         movables.add(mc2);
+        shootables.add(mc);
+        shootables.add(mc2);
         collisionDetector = new CollisionDetector(movables, shootables, mc);
-        kBH = new GameKeyboard(mc);
-        kBH1 = new GameKeyboard(mc);
+        kBH = new TwoPlayerKeyboard(mc, mc2);
+
+        while (!collisionDetector.isLevelCompleted()) {
+
+            for (Movable movable : movables) {
+
+                movable.move();
+            }
+
+            collisionDetector.check();
+
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public InitialScreen getInitialScreen() {

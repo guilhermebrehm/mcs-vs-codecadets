@@ -15,12 +15,12 @@ import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.*;
 /**
  * Created by codecadet on 13/10/2017.
  */
-public class GameKeyboard implements KeyboardHandler {
+public class OnePlayerKeyboard implements KeyboardHandler {
 
     private Keyboard keyboard;
     private Controllable controllable;
 
-    public GameKeyboard(Controllable controllable) {
+    public OnePlayerKeyboard(Controllable controllable) {
 
         this.controllable = controllable;
         keyboard = new Keyboard(this);

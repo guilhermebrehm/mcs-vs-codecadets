@@ -11,15 +11,26 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 /**
  * Created by codecadet on 13/10/2017.
  */
-public class MC extends GameEntity implements Controllable {
+public class MC extends GameEntity implements Controllable, Shootable {
 
     //Properties
     private boolean willShoot;
-
+    private boolean dead;
 
     //Constructor
     public MC(Grid grid) {
 
+        super.setGrid(grid);
+        super.setGridPosition(getPosition(grid));
+
+        setDirection(null);
+
+        willShoot = false;
+    }
+
+    public MC(Grid grid, boolean opposite) {
+
+        setOpposite(opposite);
         super.setGrid(grid);
         super.setGridPosition(getPosition(grid));
 
@@ -33,6 +44,11 @@ public class MC extends GameEntity implements Controllable {
 
         int x = (int) (Math.floor(grid.getWidth() / 2));
         int y = grid.getHeight() - 150;
+
+        if(isOpposite()) {
+            x = (int) (Math.floor(grid.getWidth() / 2));
+            y = 150 + Grid.PADDING;
+        }
 
         Picture picture = new Picture(x, y, "images/pantoninho.png");
 
@@ -50,14 +66,32 @@ public class MC extends GameEntity implements Controllable {
         if (willShoot) {
             willShoot = false;
             Game.collisionDetector.addBullet(new Bullet(this));
+            System.out.println("passei");
         }
 
         getGridPosition().moveInDirection(getDirection());
+        System.out.println("moved");
 
     }
 
     @Override
     public void setDirection(Direction direction) {
+
+        if(isOpposite() && direction != null) {
+            direction = Direction.values()[(direction.ordinal() + 2) % 4];
+        }
+
         super.setDirection(direction);
     }
+
+    @Override
+    public void getShot() {
+        dead = true;
+    }
+
+    @Override
+    public boolean isDead() {
+        return dead;
+    }
+
 }
