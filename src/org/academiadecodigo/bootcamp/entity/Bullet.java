@@ -17,10 +17,10 @@ public class Bullet extends GameEntity implements Movable {
     public Bullet(GameEntity entity) {
 
         Picture picture = new Picture(entity.getGridPosition().getX(),
-                entity.getGridPosition().getY(), "images/potato.png");
+                entity.getGridPosition().getY(), "images/potato-icon.png");
 
         setGridPosition(new GridPosition(entity.getGrid(), picture));
-        //getGridPosition().grow(-200, -200);
+        getGridPosition().grow(-30, -30);
 
         direction = entity.getDirection();
     }
