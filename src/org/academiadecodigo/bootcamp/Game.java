@@ -26,15 +26,13 @@ public class Game {
 
         initialScreen = new InitialScreen(this);
         initialScreen.show();
-
-
     }
 
     public void start() {
 
         for (int i = 0; i < NUM_LEVELS ; i++) {
 
-            init();
+            loadLevel(i);
 
             while (!collisionDetector.isGameOver()) {
 
@@ -60,21 +58,19 @@ public class Game {
         FinalScreen finalScreen = new FinalScreen((this.grid.getWidth() / 2) - 457, 10);
     }
 
-    public void init() {
+    private void loadLevel(int level) {
 
         this.grid = new Grid(1400, 900);
+        GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
-
-        GameLevel gameLevel = new GameLevel("levels/0.lvl");
-
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
         movables = new ArrayList<>(codeCadets);
         ArrayList<Shootable> shootables = new ArrayList<>(codeCadets);
-
         MC mc = new MC(grid);
         movables.add(mc);
         collisionDetector = new CollisionDetector(movables, shootables, mc);
         kBH = new GameKeyboard(mc);
+
     }
 
     public InitialScreen getInitialScreen() {
