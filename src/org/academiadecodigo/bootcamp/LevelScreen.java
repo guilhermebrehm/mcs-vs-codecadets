@@ -9,6 +9,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class LevelScreen {
 
     //Properties
+    private Grid grid;
     private Picture fries;
     private Picture fries2;
     private Picture fries3;
@@ -21,6 +22,8 @@ public class LevelScreen {
 
     //Constructor
     public LevelScreen(Grid grid) {
+
+        this.grid = new Grid(1400, 900);
         this.fries = new Picture(Grid.PADDING - 33, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
         this.fries.grow(-33, 0);
         this.fries2 = new Picture(500 - 33 - 23, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
@@ -45,7 +48,7 @@ public class LevelScreen {
 
         try {
             for (Picture p : potatoArray) {
-                Thread.sleep(1500);
+                Thread.sleep(1000);
                 p.draw();
             }
         } catch (InterruptedException e) {

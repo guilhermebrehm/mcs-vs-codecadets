@@ -9,11 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Game game = new Game();
-
-        Grid grid = new Grid(1400,900);
-
-        LevelScreen levelScreen = new LevelScreen(grid);
+        Game game = new Game();
 
         //TODO: MISSILE
     }
