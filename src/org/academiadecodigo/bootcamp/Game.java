@@ -17,7 +17,7 @@ public class Game {
     public static CollisionDetector collisionDetector;
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
-    public static int NUM_LEVELS = 1;
+    public static int NUM_LEVELS = 2;
 
     //Constructor
     public Game() {
@@ -30,18 +30,21 @@ public class Game {
 
     public void start() {
 
+        outerloop:
         for (int i = 0; i < NUM_LEVELS ; i++) {
 
             loadLevel(i);
 
-            while (!collisionDetector.isGameOver()) {
+            while (!collisionDetector.isLevelCompleted()) {
+
+                if(collisionDetector.isGameOver()){
+                    break outerloop;
+                }
 
                 for (Movable movable : movables) {
 
                     movable.move();
                 }
-
-                System.out.println(movables.size());
 
                 collisionDetector.check();
 
@@ -51,7 +54,6 @@ public class Game {
                     e.printStackTrace();
                 }
             }
-
 
         }
 
@@ -64,8 +66,8 @@ public class Game {
         GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
-        movables = new ArrayList<>(codeCadets);
         ArrayList<Shootable> shootables = new ArrayList<>(codeCadets);
+        movables = new ArrayList<>(codeCadets);
         MC mc = new MC(grid);
         movables.add(mc);
         collisionDetector = new CollisionDetector(movables, shootables, mc);

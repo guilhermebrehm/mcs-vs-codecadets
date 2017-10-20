@@ -118,4 +118,13 @@ public class CollisionDetector {
         return false;
     }
 
+    public boolean isLevelCompleted() {
+
+        if(shootables.size() == 0) {
+            return true;
+        }
+
+        return false;
+    }
+
 }
