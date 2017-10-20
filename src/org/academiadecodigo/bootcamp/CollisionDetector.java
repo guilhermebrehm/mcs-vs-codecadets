@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.entity.Bullet;
 import org.academiadecodigo.bootcamp.entity.MC;
 import org.academiadecodigo.bootcamp.entity.Movable;
 import org.academiadecodigo.bootcamp.entity.Shootable;
+import org.academiadecodigo.bootcamp.grid.Grid;
 
 import java.util.ArrayList;
 
@@ -53,11 +54,15 @@ public class CollisionDetector {
 
                 if ((bulletX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
                         (bulletMaxX > xMin && bulletMaxX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax) ||
-                                (bulletMaxX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
-                                (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)){
+                        (bulletMaxX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
+                        (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)) {
                     shootablesToBeShot.add(shootable);
                     bulletsToBeRemoved.add(bullet);
                 }
+            }
+
+            if (bullet.getGridPosition().getY() == Grid.PADDING) {
+                bulletsToBeRemoved.add(bullet);
             }
         }
 
@@ -106,7 +111,7 @@ public class CollisionDetector {
 
     public boolean isGameOver() {
         for (Shootable cadet : shootables) {
-            if(cadet.getGridPosition().getMaxY() == mc.getGridPosition().getY()) {
+            if (cadet.getGridPosition().getMaxY() == mc.getGridPosition().getY()) {
                 return true;
             }
         }
