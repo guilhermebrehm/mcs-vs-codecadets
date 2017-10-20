@@ -28,7 +28,7 @@ public class GameEntityFactory {
             int numCadetsThisRow = (i == numRows + 1) ? numCadets % 4 : 4;
 
             int horizontalInterval = (grid.getWidth() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
-            int upperPadding = 20;
+            int upperPadding = 10;
             int verticalInterval = (grid.getHeight() - upperPadding) / (numRows * 2);
 
             for (int j = 0; j < numCadetsThisRow; j++) {

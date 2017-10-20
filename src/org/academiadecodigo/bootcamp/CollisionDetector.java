@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.Bullet;
+import org.academiadecodigo.bootcamp.entity.MC;
 import org.academiadecodigo.bootcamp.entity.Movable;
 import org.academiadecodigo.bootcamp.entity.Shootable;
 
@@ -18,8 +19,9 @@ public class CollisionDetector {
 
     private ArrayList<Movable> movables;
     private ArrayList<Shootable> shootables;
+    private MC mc;
 
-    public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables) {
+    public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables, MC mc) {
         bullets = new ArrayList<>();
         bulletsToBeAdded = new ArrayList<>();
         bulletsToBeRemoved = new ArrayList<>();
@@ -27,6 +29,8 @@ public class CollisionDetector {
 
         this.movables = movables;
         this.shootables = shootables;
+
+        this.mc = mc;
     }
 
     public void check() {
@@ -98,6 +102,15 @@ public class CollisionDetector {
                 shootables.remove(shootable);
             }
         }
+    }
+
+    public boolean isGameOver() {
+        for (Shootable cadet : shootables) {
+            if(cadet.getGridPosition().getMaxY() == mc.getGridPosition().getY()) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

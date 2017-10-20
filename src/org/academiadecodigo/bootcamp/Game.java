@@ -35,7 +35,7 @@ public class Game {
 
         init();
 
-        while (true) {
+        while (!collisionDetector.isGameOver()) {
 
             for (Movable movable : movables) {
 
@@ -46,13 +46,14 @@ public class Game {
 
             collisionDetector.check();
 
-
             try {
                 Thread.sleep(5);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
         }
+
+        //TODO:insert final screen
     }
 
     public void init() {
@@ -66,11 +67,13 @@ public class Game {
 
         MC mc = new MC(grid);
         movables.add(mc);
-        collisionDetector = new CollisionDetector(movables, shootables);
+        collisionDetector = new CollisionDetector(movables, shootables, mc);
         kBH = new GameKeyboard(mc);
     }
 
     public InitialScreen getInitialScreen() {
         return initialScreen;
     }
+
+
 }
