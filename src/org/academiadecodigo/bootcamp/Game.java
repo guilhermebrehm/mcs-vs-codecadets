@@ -18,17 +18,25 @@ public class Game {
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
     public static int NUM_LEVELS = 2;
+    private boolean twoPlayers;
 
     //Constructor
-    public Game() {
+    public Game(boolean twoPlayers) {
 
         kBH = new InitialScreenKeyboard(this);
 
         initialScreen = new InitialScreen(this);
         initialScreen.show();
+
+        this.twoPlayers = twoPlayers;
     }
 
     public void start() {
+
+        if(twoPlayers){
+           load2PlayerArena();
+           return;
+        }
 
         outerloop:
         for (int i = 0; i < NUM_LEVELS ; i++) {
@@ -73,6 +81,19 @@ public class Game {
         collisionDetector = new CollisionDetector(movables, shootables, mc);
         kBH = new GameKeyboard(mc);
 
+    }
+
+    private void load2PlayerArena() {
+        this.grid = new Grid(1400, 900);
+        ArrayList<Shootable> shootables = new ArrayList<>();
+        movables = new ArrayList<>();
+        MC mc = new MC(grid);
+        MC mc2 = new MC(grid);
+        movables.add(mc);
+        movables.add(mc2);
+        collisionDetector = new CollisionDetector(movables, shootables, mc);
+        kBH = new GameKeyboard(mc);
+        kBH1 = new GameKeyboard(mc);
     }
 
     public InitialScreen getInitialScreen() {
