@@ -57,11 +57,11 @@ public class Game {
                 }
             }
 
-            finalScreen = new FinalScreen((this.grid.getWidth()/2) - 457,10);
 
         }
 
         //TODO:insert final screen
+        finalScreen = new FinalScreen((this.grid.getWidth()/2) - 457,10);
     }
 
     public void init() {
