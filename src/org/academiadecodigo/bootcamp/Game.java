@@ -63,6 +63,12 @@ public class Game {
                 }
             }
 
+            LevelScreen levelScreen = new LevelScreen(grid);
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
 
         FinalScreen finalScreen = new FinalScreen((this.grid.getWidth() / 2) - 457, 10);
