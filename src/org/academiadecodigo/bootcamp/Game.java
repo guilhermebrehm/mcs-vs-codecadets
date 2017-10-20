@@ -14,13 +14,10 @@ public class Game {
 
     private Grid grid;
     private ArrayList<Movable> movables;
-    private ArrayList<Shootable> shootables;
-    private GameEntityFactory gameEntityFactory;
     public static CollisionDetector collisionDetector;
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
-    public static int NUM_LEVELS = 1;
-    private FinalScreen finalScreen;
+    public static int NUM_LEVELS = 2;
 
     //Constructor
     public Game() {
@@ -29,24 +26,25 @@ public class Game {
 
         initialScreen = new InitialScreen(this);
         initialScreen.show();
-
-
     }
 
     public void start() {
 
+        outerloop:
         for (int i = 0; i < NUM_LEVELS ; i++) {
 
-            init();
+            loadLevel(i);
 
-            while (!collisionDetector.isGameOver()) {
+            while (!collisionDetector.isLevelCompleted()) {
+
+                if(collisionDetector.isGameOver()){
+                    break outerloop;
+                }
 
                 for (Movable movable : movables) {
 
                     movable.move();
                 }
-
-                System.out.println(movables.size());
 
                 collisionDetector.check();
 
@@ -57,28 +55,24 @@ public class Game {
                 }
             }
 
-
         }
 
-        //TODO:insert final screen
-        finalScreen = new FinalScreen((this.grid.getWidth()/2) - 457,10);
+        FinalScreen finalScreen = new FinalScreen((this.grid.getWidth() / 2) - 457, 10);
     }
 
-    public void init() {
+    private void loadLevel(int level) {
 
         this.grid = new Grid(1400, 900);
-        this.gameEntityFactory = new GameEntityFactory();
-
-        GameLevel gameLevel = new GameLevel("levels/0.lvl");
-
+        GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
+        GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
+        ArrayList<Shootable> shootables = new ArrayList<>(codeCadets);
         movables = new ArrayList<>(codeCadets);
-        shootables = new ArrayList<>(codeCadets);
-
         MC mc = new MC(grid);
         movables.add(mc);
         collisionDetector = new CollisionDetector(movables, shootables, mc);
         kBH = new GameKeyboard(mc);
+
     }
 
     public InitialScreen getInitialScreen() {

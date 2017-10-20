@@ -32,9 +32,7 @@ public class Bullet extends GameEntity implements Movable {
         getGridPosition().moveInDirection(Direction.UP);
         getGridPosition().moveInDirection(direction);
 
-        if (getGridPosition().getY() == Grid.PADDING) {
-            delete();
-        }
+
     }
 
     public void delete() {
