@@ -28,12 +28,13 @@ public class GameEntityFactory {
             int numCadetsThisRow = (i == numRows + 1) ? numCadets % 4 : 4;
 
             int horizontalInterval = (grid.getWidth() - (numCadetsThisRow)) / (numCadetsThisRow + 1);
-            int verticalInterval = (int) ((grid.getHeight() - (numRows + grid.getHeight() * .2)) / (numRows + 1));
+            int upperPadding = 20;
+            int verticalInterval = (grid.getHeight() - upperPadding) / (numRows * 2);
 
             for (int j = 0; j < numCadetsThisRow; j++) {
 
                 int x = horizontalInterval + (j * (horizontalInterval + 1));
-                int y = i * verticalInterval;
+                int y = upperPadding + i * verticalInterval;
 
                 Picture picture = new Picture(x, y, "images/soldier.png");
 
