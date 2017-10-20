@@ -3,8 +3,6 @@ package org.academiadecodigo.bootcamp.entity;
 import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
-import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -13,16 +11,19 @@ public class CodeCadet extends GameEntity implements Shootable {
 
     private boolean dead;
     private int directionCounter;
+    private int goingDownCounter;
+    private boolean isGoingDown;
+    private Direction previousDirection;
 
     //Constructor
-    public CodeCadet(Grid grid, GridPosition gridPosition) {
+    public CodeCadet(Grid grid, GridPosition gridPosition, Direction direction) {
         setGrid(grid);
         setGridPosition(gridPosition);
 
-        directionCounter = 10;
-        setDirection(Direction.RIGHT);
+        setDirection(direction);
 
         dead = false;
+        isGoingDown = false;
     }
 
     @Override
@@ -43,9 +44,25 @@ public class CodeCadet extends GameEntity implements Shootable {
             return;
         }
 
+        if (isGoingDown){
+
+            if(goingDownCounter % 20 == 0){
+
+                directionSwitch();
+                isGoingDown = false;
+            }
+
+            goingDownCounter++;
+            getGridPosition().moveInDirection(getDirection());
+            return;
+        }
+
+
         if (directionCounter % 100 == 0) {
 
-            directionSwitch();
+            isGoingDown = true;
+            previousDirection = getDirection();
+            setDirection(Direction.DOWN);
         }
 
         directionCounter++;
@@ -56,6 +73,6 @@ public class CodeCadet extends GameEntity implements Shootable {
 
     private void directionSwitch() {
 
-        setDirection(Direction.values()[(getDirection().ordinal() + 2) % 4]);
+        setDirection(Direction.values()[(previousDirection.ordinal() + 2) % 4]);
     }
 }
