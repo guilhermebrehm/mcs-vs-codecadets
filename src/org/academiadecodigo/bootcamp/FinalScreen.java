@@ -13,8 +13,8 @@ public class FinalScreen {
 
     //Constructor
     public FinalScreen(int x, int y) {
-        mashedPotato = new Picture(x,y,"images/mashed-potatoes.png");
-        gameOver = new Picture(x - 125,y + 50,"images/gameOver.png");
+        mashedPotato = new Picture(x,y,"images/main-dish-mashed.png");
+        gameOver = new Picture(x + 40,y + 150,"images/gameOver.png");
         mashedPotato.draw();
         gameOver.draw();
     }

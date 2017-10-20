@@ -10,7 +10,7 @@ public class Main {
         //Game game = new Game();
 
 
-        FinalScreen finalScreen = new FinalScreen(150,10);
+        FinalScreen finalScreen = new FinalScreen(10,10);
 
         //TODO: MISSILE
     }
