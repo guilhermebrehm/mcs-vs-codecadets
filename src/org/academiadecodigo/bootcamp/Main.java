@@ -7,10 +7,9 @@ public class Main {
 
     public static void main(String[] args) {
 
-        //Game game = new Game();
+        Game game = new Game();
 
 
-        FinalScreen finalScreen = new FinalScreen(10,10);
 
         //TODO: MISSILE
     }

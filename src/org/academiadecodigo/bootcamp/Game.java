@@ -20,6 +20,7 @@ public class Game {
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
     public static int NUM_LEVELS = 1;
+    private FinalScreen finalScreen;
 
     //Constructor
     public Game() {
@@ -55,6 +56,8 @@ public class Game {
                     e.printStackTrace();
                 }
             }
+
+            finalScreen = new FinalScreen((this.grid.getWidth()/2) - 457,10);
 
         }
 
