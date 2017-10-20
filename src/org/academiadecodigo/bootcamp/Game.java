@@ -19,6 +19,7 @@ public class Game {
     public static CollisionDetector collisionDetector;
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
+    public static int NUM_LEVELS = 1;
 
     //Constructor
     public Game() {
@@ -33,24 +34,28 @@ public class Game {
 
     public void start() {
 
-        init();
+        for (int i = 0; i < NUM_LEVELS ; i++) {
 
-        while (!collisionDetector.isGameOver()) {
+            init();
 
-            for (Movable movable : movables) {
+            while (!collisionDetector.isGameOver()) {
 
-                movable.move();
+                for (Movable movable : movables) {
+
+                    movable.move();
+                }
+
+                System.out.println(movables.size());
+
+                collisionDetector.check();
+
+                try {
+                    Thread.sleep(5);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
-            System.out.println(movables.size());
-
-            collisionDetector.check();
-
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
 
         //TODO:insert final screen
@@ -61,7 +66,9 @@ public class Game {
         this.grid = new Grid(1400, 900);
         this.gameEntityFactory = new GameEntityFactory();
 
-        ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(20, grid);
+        GameLevel gameLevel = new GameLevel("levels/0.lvl");
+
+        ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
         movables = new ArrayList<>(codeCadets);
         shootables = new ArrayList<>(codeCadets);
 
