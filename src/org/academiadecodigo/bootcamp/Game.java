@@ -17,8 +17,8 @@ public class Game {
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
     private KeyboardHandler kBH1;
-    public static int NUM_LEVELS = 2;
     private boolean twoPlayers;
+    public static int NUM_LEVELS = 6;
 
     //Constructor
     public Game(boolean twoPlayers) {
@@ -46,6 +46,7 @@ public class Game {
             while (!collisionDetector.isLevelCompleted()) {
 
                 if(collisionDetector.isGameOver()){
+                    new GameOverScreen((this.grid.getWidth() / 2) - 457, 10);
                     break outerloop;
                 }
 
@@ -63,15 +64,22 @@ public class Game {
                 }
             }
 
-            LevelScreen levelScreen = new LevelScreen(grid);
-            try {
-                Thread.sleep(1500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            if(i != NUM_LEVELS-1) {
+                LevelScreen levelScreen = new LevelScreen(grid);
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if(i == NUM_LEVELS-1) {
+                new FinalScreen(grid);
             }
         }
 
-        FinalScreen finalScreen = new FinalScreen((this.grid.getWidth() / 2) - 457, 10);
+
+
     }
 
     private void loadLevel(int level) {

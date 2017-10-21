@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.grid;
 
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 13/10/2017.
@@ -17,8 +18,8 @@ public class Grid {
     public Grid(int width, int height) {
         this.width = width;
         this.height = height;
-        rectangle = new Rectangle(PADDING, PADDING, width, height);
-        rectangle.fill();
+        Picture background = new Picture(10,10, "images/backgroundX.png");
+        background.draw();
     }
 
     public int getHeight() {

@@ -1,27 +1,24 @@
 package org.academiadecodigo.bootcamp;
 
+
+import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
- * Created by codecadet on 20/10/2017.
+ * Created by codecadet on 21/10/2017.
  */
 public class FinalScreen {
 
     //Properties
-    private Picture mashedPotato;
-    private Picture gameOver;
+    private Rectangle background;
+    private Picture text;
 
     //Constructor
-    public FinalScreen(int x, int y) {
-        mashedPotato = new Picture(x,y,"images/main-dish-mashed.png");
-        gameOver = new Picture(x + 40,y + 150,"images/gameOver.png");
-        mashedPotato.draw();
-        gameOver.draw();
-    }
-
-    //Methods
-    public void delete() {
-        mashedPotato.delete();
-        gameOver.delete();
+    public FinalScreen(Grid grid) {
+        background = new Rectangle(Grid.PADDING,Grid.PADDING,grid.getWidth(),grid.getHeight());
+        background.fill();
+        text = new Picture(130 + Grid.PADDING, 300, "images/goodwintext.png");
+        text.draw();
     }
 }

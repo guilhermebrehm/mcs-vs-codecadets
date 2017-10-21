@@ -37,7 +37,7 @@ public class GameEntityFactory {
                 int x = horizontalInterval + (j * (horizontalInterval + 1));
                 int y = upperPadding + i * verticalInterval;
 
-                Picture picture = new Picture(x, y, "images/soldier.png");
+                Picture picture = new Picture(x, y, "images/parachutist.png");
 
                 GridPosition position = new GridPosition(grid, picture);
                 CodeCadet codeCadet = new CodeCadet(grid, position, initialDirection);
@@ -72,7 +72,7 @@ public class GameEntityFactory {
                 int x = horizontalInterval + (j * (horizontalInterval + 1));
                 int y = upperPadding + i * verticalInterval;
 
-                Picture picture = new Picture(x, y, "images/soldier.png");
+                Picture picture = new Picture(x, y, "images/parachutist.png");
 
 
                 if(cadetPosConfig.get(i)[j]) {
