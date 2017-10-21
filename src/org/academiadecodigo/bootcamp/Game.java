@@ -33,19 +33,19 @@ public class Game {
 
     public void start() {
 
-        if(twoPlayers){
-           load2PlayerArena();
-           return;
+        if (twoPlayers) {
+            load2PlayerArena();
+            return;
         }
 
         outerloop:
-        for (int i = 0; i < NUM_LEVELS ; i++) {
+        for (int i = 0; i < NUM_LEVELS; i++) {
 
             loadLevel(i);
 
             while (!collisionDetector.isLevelCompleted()) {
 
-                if(collisionDetector.isGameOver()){
+                if (collisionDetector.isGameOver()) {
                     new GameOverScreen((this.grid.getWidth() / 2) - 457, 10);
                     break outerloop;
                 }
@@ -64,7 +64,7 @@ public class Game {
                 }
             }
 
-            if(i != NUM_LEVELS-1) {
+            if (i != NUM_LEVELS - 1) {
                 LevelScreen levelScreen = new LevelScreen(grid);
                 try {
                     Thread.sleep(1500);
@@ -73,12 +73,10 @@ public class Game {
                 }
             }
 
-            if(i == NUM_LEVELS-1) {
-                new FinalScreen(grid);
-            }
+
         }
 
-
+        new FinalScreen(grid);
 
     }
 
