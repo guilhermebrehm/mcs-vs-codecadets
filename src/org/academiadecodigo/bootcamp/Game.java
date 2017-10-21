@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.sound.SoundManager;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.util.ArrayList;

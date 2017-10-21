@@ -5,6 +5,9 @@ import org.academiadecodigo.bootcamp.entity.MC;
 import org.academiadecodigo.bootcamp.entity.Movable;
 import org.academiadecodigo.bootcamp.entity.Shootable;
 import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.sound.Sound;
+import org.academiadecodigo.bootcamp.sound.SoundManager;
+import org.academiadecodigo.bootcamp.sound.SoundType;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,8 @@ public class CollisionDetector {
     private ArrayList<Shootable> shootables;
     private MC mc;
 
+    private SoundManager soundManager;
+
     public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables, MC mc) {
         bullets = new ArrayList<>();
         bulletsToBeAdded = new ArrayList<>();
@@ -32,6 +37,8 @@ public class CollisionDetector {
         this.shootables = shootables;
 
         this.mc = mc;
+
+        soundManager = new SoundManager();
     }
 
     public void check() {
@@ -74,6 +81,8 @@ public class CollisionDetector {
     public void addBullet(Bullet bullet) {
 
         bulletsToBeAdded.add(bullet);
+        soundManager.playSound(SoundType.BATATA);
+
     }
 
     private void addBullets() {
