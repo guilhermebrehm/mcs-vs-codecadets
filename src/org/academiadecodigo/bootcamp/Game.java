@@ -96,7 +96,7 @@ public class Game {
     }
 
     private void load2PlayerArena() {
-        this.grid = new Grid(1400, 900);
+        this.grid = new Grid(800,600);
         ArrayList<Shootable> shootables = new ArrayList<>();
         movables = new ArrayList<>();
         MC mc = new MC(grid);
