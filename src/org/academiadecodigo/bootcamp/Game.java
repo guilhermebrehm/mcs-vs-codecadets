@@ -24,7 +24,7 @@ public class Game {
 
         kBH = new InitialScreenKeyboard(this);
 
-        initialScreen = new InitialScreen(this);
+        initialScreen = new InitialScreen(this,grid);
         initialScreen.show();
     }
 
@@ -38,7 +38,7 @@ public class Game {
             while (!collisionDetector.isLevelCompleted()) {
 
                 if(collisionDetector.isGameOver()){
-                    new GameOverScreen((this.grid.getWidth() / 2) - 457, 10);
+                    new GameOverScreen();
                     break outerloop;
                 }
 
@@ -70,17 +70,11 @@ public class Game {
             }
         }
 
-
-
     }
 
     private void loadLevel(int level) {
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int width = (int) screenSize.getWidth();
-        int height = (int) screenSize.getHeight();
-
-        this.grid = new Grid(width, height);
+        grid = new Grid(800,600);
         GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);

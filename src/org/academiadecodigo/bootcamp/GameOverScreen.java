@@ -12,9 +12,13 @@ public class GameOverScreen {
     private Picture gameOver;
 
     //Constructor
-    public GameOverScreen(int x, int y) {
+    public GameOverScreen() {
+        int x = -50;
+        int y = -100;
         mashedPotato = new Picture(x,y,"images/main-dish-mashed.png");
-        gameOver = new Picture(x + 40,y + 150,"images/gameOver.png");
+        mashedPotato.grow(-200,-200);
+        gameOver = new Picture(x + 40, y + 250,"images/gameOver.png");
+        gameOver.grow(-200,-50);
         mashedPotato.draw();
         gameOver.draw();
     }

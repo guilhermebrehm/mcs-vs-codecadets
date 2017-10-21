@@ -18,7 +18,7 @@ public class Grid {
     public Grid(int width, int height) {
         this.width = width;
         this.height = height;
-        Picture background = new Picture(10,10, "images/backgroundX.png");
+        Picture background = new Picture(10,10, "images/background-800px.png");
         background.draw();
     }
 

@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -17,12 +18,13 @@ public class InitialScreen {
     private Game game;
 
     //Constructor
-    public InitialScreen(Game game) {
-        background = new Picture(10, 10, "logo.png");
+    public InitialScreen(Game game, Grid grid) {
+        background = new Picture(10, 10, "images/Evil-Pantoninho-800px.png");
+
         background.draw();
         letters = new Picture(10, 10, "insert.png");
-        letters.grow(-700, -20);
-        letters.translate(-600, 0);
+        letters.grow(-900, -20);
+        letters.translate(-850, 0);
         this.game = game;
     }
 
