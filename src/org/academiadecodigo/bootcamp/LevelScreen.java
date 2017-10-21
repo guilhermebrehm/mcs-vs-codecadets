@@ -23,7 +23,6 @@ public class LevelScreen {
     //Constructor
     public LevelScreen(Grid grid) {
 
-        this.grid = new Grid(1400, 900);
         this.fries = new Picture(Grid.PADDING - 33, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
         this.fries.grow(-33, 0);
         this.fries2 = new Picture(500 - 33 - 23, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
@@ -31,9 +30,12 @@ public class LevelScreen {
         this.fries3.grow(-17, 0);
         this.text = new Picture(130, 100, "images/Collecting-potatoes.png");
         this.text2 = new Picture(130, 220, "images/for-next-level.png");
-        this.potatoes = new Picture(150 + Grid.PADDING, 400, "images/potatoes.png");
-        this.potatoes2 = new Picture(grid.getWidth() / 2 - 150 + Grid.PADDING, 400, "images/potatoes.png");
-        this.potatoes3 = new Picture(grid.getWidth() - 450 + Grid.PADDING, 400, "images/potatoes.png");
+        this.potatoes = new Picture(60 + Grid.PADDING, 200, "images/potatoes.png");
+        potatoes.grow(-60,-60);
+        this.potatoes2 = new Picture(grid.getWidth() / 2 -140 + Grid.PADDING, 200, "images/potatoes.png");
+        potatoes2.grow(-60,-60);
+        this.potatoes3 = new Picture(grid.getWidth() - 360 + Grid.PADDING, 200, "images/potatoes.png");
+        potatoes3.grow(-60,-60);
         this.fries.draw();
         this.fries2.draw();
         this.fries3.draw();

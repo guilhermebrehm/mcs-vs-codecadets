@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -26,7 +27,7 @@ public class Game {
         kBH = new InitialScreenKeyboard(this);
 
         this.twoPlayers = twoPlayers;
-        initialScreen = new InitialScreen(this);
+        initialScreen = new InitialScreen(this, grid);
         initialScreen.show();
 
     }
@@ -45,8 +46,8 @@ public class Game {
 
             while (!collisionDetector.isLevelCompleted()) {
 
-                if (collisionDetector.isGameOver()) {
-                    new GameOverScreen((this.grid.getWidth() / 2) - 457, 10);
+                if(collisionDetector.isGameOver()){
+                    new GameOverScreen();
                     break outerloop;
                 }
 
@@ -82,7 +83,7 @@ public class Game {
 
     private void loadLevel(int level) {
 
-        this.grid = new Grid(1400, 900);
+        grid = new Grid(800,600);
         GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
