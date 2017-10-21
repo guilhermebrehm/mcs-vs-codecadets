@@ -12,6 +12,7 @@ public abstract class GameEntity implements Movable {
     private GridPosition gridPosition;
     private Grid grid;
     private Direction direction;
+    private boolean opposite;
 
     public GridPosition getGridPosition() {
         return gridPosition;
@@ -35,5 +36,13 @@ public abstract class GameEntity implements Movable {
 
     public void setDirection(Direction direction) {
         this.direction = direction;
+    }
+
+    public boolean isOpposite() {
+        return opposite;
+    }
+
+    public void setOpposite(boolean opposite) {
+        this.opposite = opposite;
     }
 }

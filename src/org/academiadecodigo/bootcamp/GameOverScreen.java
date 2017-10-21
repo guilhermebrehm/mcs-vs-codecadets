@@ -3,25 +3,19 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
- * Created by codecadet on 20/10/2017.
+ * Created by codecadet on 21/10/2017.
  */
 public class GameOverScreen {
 
     //Properties
-    private Picture mashedPotato;
     private Picture gameOver;
 
     //Constructor
-    public GameOverScreen(int x, int y) {
-        mashedPotato = new Picture(x,y,"images/main-dish-mashed.png");
-        gameOver = new Picture(x + 40,y + 150,"images/gameOver.png");
-        mashedPotato.draw();
-        gameOver.draw();
+    public GameOverScreen() {
+        while(true) {
+            gameOver = new Picture(10, 10, "images/Game-Over-800px.png");
+            gameOver.draw();
+        }
     }
 
-    //Methods
-    public void delete() {
-        mashedPotato.delete();
-        gameOver.delete();
-    }
 }

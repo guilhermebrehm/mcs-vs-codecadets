@@ -27,7 +27,9 @@ public class CollisionDetector {
 
     private SoundManager soundManager;
 
-    public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables, MC mc) {
+    boolean twoPlayers;
+
+    public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables, MC mc, boolean twoPlayers) {
         bullets = new ArrayList<>();
         bulletsToBeAdded = new ArrayList<>();
         bulletsToBeRemoved = new ArrayList<>();
@@ -39,6 +41,7 @@ public class CollisionDetector {
         this.mc = mc;
 
         soundManager = new SoundManager();
+        this.twoPlayers = twoPlayers;
     }
 
     public void check() {
@@ -68,7 +71,7 @@ public class CollisionDetector {
                 }
             }
 
-            if (bullet.getGridPosition().getY() == Grid.PADDING) {
+            if (bullet.getGridPosition().getY() == Grid.PADDING || bullet.getGridPosition().getMaxY() == bullet.getGrid().getHeight()) {
                 bulletsToBeRemoved.add(bullet);
             }
         }
@@ -128,6 +131,10 @@ public class CollisionDetector {
     }
 
     public boolean isLevelCompleted() {
+
+        if(twoPlayers && shootables.size() == 1) {
+            return true;
+        }
 
         if(shootables.size() == 0) {
             return true;

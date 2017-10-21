@@ -11,14 +11,11 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class FinalScreen {
 
     //Properties
-    private Rectangle background;
-    private Picture text;
+    private Picture image;
 
     //Constructor
     public FinalScreen(Grid grid) {
-        background = new Rectangle(Grid.PADDING,Grid.PADDING,grid.getWidth(),grid.getHeight());
-        background.fill();
-        text = new Picture(130 + Grid.PADDING, 300, "images/goodwintext.png");
-        text.draw();
+        image = new Picture(Grid.PADDING, Grid.PADDING, "images/that-was-easy-800px.png");
+        image.draw();
     }
 }
