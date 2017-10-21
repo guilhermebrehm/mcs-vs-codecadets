@@ -36,7 +36,7 @@ public class LevelScreen {
         try {
             for (Picture p : potatoArray) {
                 p.draw();
-                Thread.sleep(1000);
+                Thread.sleep(800);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();

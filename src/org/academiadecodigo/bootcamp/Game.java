@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -83,6 +84,8 @@ public class Game {
     private void loadLevel(int level) {
 
         grid = new Grid(800,600);
+        Picture background = new Picture(10,10, "images/background-800px.png");
+        background.draw();
         GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
@@ -96,7 +99,10 @@ public class Game {
     }
 
     private void load2PlayerArena() {
+
         this.grid = new Grid(800,600);
+        Picture background = new Picture(10,10,"images/blackwood-800px.jpg");
+        background.draw();
         ArrayList<Shootable> shootables = new ArrayList<>();
         movables = new ArrayList<>();
         MC mc = new MC(grid);

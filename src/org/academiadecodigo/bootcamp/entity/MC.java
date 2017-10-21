@@ -47,10 +47,10 @@ public class MC extends GameEntity implements Controllable, Shootable {
 
         if(isOpposite()) {
             x = (int) (Math.floor(grid.getWidth() / 2));
-            y = 150 + Grid.PADDING;
+            y = Grid.PADDING;
         }
 
-        Picture picture = new Picture(x, y, "images/pantoninho.png");
+        Picture picture = new Picture(x, y, "images/pantoninho-90px (1).png");
 
         return new GridPosition(grid, picture);
     }
