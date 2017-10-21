@@ -84,7 +84,7 @@ public class Game {
         movables = new ArrayList<>(codeCadets);
         MC mc = new MC(grid);
         movables.add(mc);
-        collisionDetector = new CollisionDetector(movables, shootables, mc);
+        collisionDetector = new CollisionDetector(movables, shootables, mc, false);
         kBH = new OnePlayerKeyboard(mc);
 
     }
@@ -99,7 +99,7 @@ public class Game {
         movables.add(mc2);
         shootables.add(mc);
         shootables.add(mc2);
-        collisionDetector = new CollisionDetector(movables, shootables, mc);
+        collisionDetector = new CollisionDetector(movables, shootables, mc, true);
         kBH = new TwoPlayerKeyboard(mc, mc2);
 
         while (!collisionDetector.isLevelCompleted()) {

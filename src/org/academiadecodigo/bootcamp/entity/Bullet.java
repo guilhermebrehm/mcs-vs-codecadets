@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.entity;
 
 import org.academiadecodigo.bootcamp.grid.Direction;
-import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -23,16 +22,17 @@ public class Bullet extends GameEntity implements Movable {
         int y = entity.getGridPosition().getY() - 40;
 
         if(isOpposite()) {
-            y = entity.getGridPosition().getY() + 40;
+            y = entity.getGridPosition().getMaxY();
         }
 
         Picture picture = new Picture(x,
                 y, "images/potato.png");
 
+
+        setGrid(entity.getGrid());
         setGridPosition(new GridPosition(entity.getGrid(), picture));
 
         direction = entity.getDirection();
-        System.out.println("sai");
     }
 
     //Methods
@@ -46,8 +46,6 @@ public class Bullet extends GameEntity implements Movable {
         }
 
         getGridPosition().moveInDirection(direction);
-
-
     }
 
     public void delete() {
