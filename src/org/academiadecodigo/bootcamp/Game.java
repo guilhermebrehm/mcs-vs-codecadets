@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 import java.util.ArrayList;
@@ -63,7 +62,7 @@ public class Game {
             }
         }
 
-        FinalScreen finalScreen = new FinalScreen((this.grid.getWidth() / 2) - 457, 10);
+        gameOverScreen gameOverScreen = new gameOverScreen((this.grid.getWidth() / 2) - 457, 10);
     }
 
     private void loadLevel(int level) {
