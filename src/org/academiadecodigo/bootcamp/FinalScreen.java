@@ -18,7 +18,7 @@ public class FinalScreen {
     public FinalScreen(Grid grid) {
         background = new Rectangle(Grid.PADDING,Grid.PADDING,grid.getWidth(),grid.getHeight());
         background.fill();
-        text = new Picture(130 + Grid.PADDING, 300, "images/goodwintext.png");
+        //text = new Picture(130 + Grid.PADDING, 300, "images/goodwintext.png");
         text.draw();
     }
 }

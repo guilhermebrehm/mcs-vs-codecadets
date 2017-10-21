@@ -65,16 +65,12 @@ public class Game {
                 }
             }
 
-            if (i != NUM_LEVELS - 1) {
-                LevelScreen levelScreen = new LevelScreen(grid);
-                try {
-                    Thread.sleep(1500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            LevelScreen levelScreen = new LevelScreen(grid);
+            try {
+                Thread.sleep(1500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-
-
         }
 
         new FinalScreen(grid);
