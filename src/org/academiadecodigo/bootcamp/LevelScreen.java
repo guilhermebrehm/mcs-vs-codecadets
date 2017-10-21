@@ -9,49 +9,34 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class LevelScreen {
 
     //Properties
-    private Grid grid;
-    private Picture fries;
-    private Picture fries2;
-    private Picture fries3;
-    private Picture text;
-    private Picture text2;
     private Picture potatoes;
     private Picture potatoes2;
     private Picture potatoes3;
+    private Picture potatoes4;
+    private Picture potatoes5;
+    private Picture potatoes6;
 
 
     //Constructor
-    public LevelScreen(Grid grid) {
+    public LevelScreen() {
 
-        this.fries = new Picture(Grid.PADDING - 33, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
-        this.fries.grow(-33, 0);
-        this.fries2 = new Picture(500 - 33 - 23, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
-        this.fries3 = new Picture(1000 - 33 - 40, grid.getHeight() - 157 + Grid.PADDING, "images/french-fries.png");
-        this.fries3.grow(-17, 0);
-        this.text = new Picture(130, 100, "images/Collecting-potatoes.png");
-        this.text2 = new Picture(130, 220, "images/for-next-level.png");
-        this.potatoes = new Picture(60 + Grid.PADDING, 200, "images/potatoes.png");
-        potatoes.grow(-60,-60);
-        this.potatoes2 = new Picture(grid.getWidth() / 2 -140 + Grid.PADDING, 200, "images/potatoes.png");
-        potatoes2.grow(-60,-60);
-        this.potatoes3 = new Picture(grid.getWidth() - 360 + Grid.PADDING, 200, "images/potatoes.png");
-        potatoes3.grow(-60,-60);
-        this.fries.draw();
-        this.fries2.draw();
-        this.fries3.draw();
-        this.text.draw();
-        this.text2.draw();
+        this.potatoes = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-01.png");
+        this.potatoes2 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-02.png");
+        this.potatoes3 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-03.png");
+        this.potatoes4 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-04.png");
+        this.potatoes5 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-05.png");
+        this.potatoes6 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-06.png");
         potatoLoader();
     }
 
     //Methods
     public void potatoLoader() {
-        Picture[] potatoArray = new Picture[]{potatoes, potatoes2, potatoes3};
+        Picture[] potatoArray = new Picture[]{potatoes, potatoes2, potatoes3, potatoes4, potatoes5, potatoes6};
 
         try {
             for (Picture p : potatoArray) {
-                Thread.sleep(1000);
                 p.draw();
+                Thread.sleep(1000);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
