@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 /**
@@ -75,7 +76,11 @@ public class Game {
 
     private void loadLevel(int level) {
 
-        this.grid = new Grid(1400, 900);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int width = (int) screenSize.getWidth();
+        int height = (int) screenSize.getHeight();
+
+        this.grid = new Grid(width, height);
         GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
