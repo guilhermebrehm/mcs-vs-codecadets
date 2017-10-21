@@ -24,6 +24,7 @@ public class SoundManager {
 
     public static void playSound(SoundType soundType){
         Sound currSound = SOUNDMAP.get(soundType);
+
         if(currSound == null) {
             System.out.println("No sound available");
             return;
