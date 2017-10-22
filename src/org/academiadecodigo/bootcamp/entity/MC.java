@@ -26,7 +26,7 @@ public class MC extends GameEntity implements Controllable, Shootable {
         super.setGridPosition(gridPosition);
 
         setDirection(null);
-        health = 3;
+        health = 15;
 
         willShoot = false;
         this.playerNumber = playerNumber;
@@ -72,5 +72,9 @@ public class MC extends GameEntity implements Controllable, Shootable {
 
     public int getHealth() {
         return health;
+    }
+
+    public int getPlayerNumber() {
+        return playerNumber;
     }
 }

@@ -6,11 +6,7 @@ import org.academiadecodigo.bootcamp.keyboards.InitialScreenKeyboard;
 import org.academiadecodigo.bootcamp.keyboards.MenuScreenKeyboard;
 import org.academiadecodigo.bootcamp.keyboards.OnePlayerKeyboard;
 import org.academiadecodigo.bootcamp.keyboards.TwoPlayerKeyboard;
-import org.academiadecodigo.bootcamp.screens.GameOverScreen;
-import org.academiadecodigo.bootcamp.screens.InitialScreen;
-import org.academiadecodigo.bootcamp.screens.LevelScreen;
-import org.academiadecodigo.bootcamp.screens.FinalScreen;
-import org.academiadecodigo.bootcamp.screens.MenuScreen;
+import org.academiadecodigo.bootcamp.screens.*;
 import org.academiadecodigo.bootcamp.sound.SoundManager;
 import org.academiadecodigo.bootcamp.sound.SoundType;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -116,8 +112,6 @@ public class Game {
 
         //TODO: insert batata_porra sound when 2P game ends
 
-
-
         this.grid = new Grid(800, 600);
         Picture background = new Picture(10, 10, "images/blackwood-800px.jpg");
         background.draw();
@@ -159,6 +153,12 @@ public class Game {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+        }
+
+        if(((MC)shootables.get(0)).getPlayerNumber() == 1){
+            new Player1Wins();
+        } else {
+            new Player2Wins();
         }
     }
 

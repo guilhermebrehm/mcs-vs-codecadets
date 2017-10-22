@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
-import org.academiadecodigo.bootcamp.sound.Sound;
 import org.academiadecodigo.bootcamp.sound.SoundManager;
 import org.academiadecodigo.bootcamp.sound.SoundType;
 
@@ -24,7 +23,7 @@ public class CollisionDetector {
 
     private SoundManager soundManager;
 
-    boolean twoPlayers;
+    private boolean twoPlayers;
 
     public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables, MC mc, boolean twoPlayers) {
         bullets = new ArrayList<>();
@@ -62,12 +61,12 @@ public class CollisionDetector {
                 if ((bulletX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
                         (bulletMaxX > xMin && bulletMaxX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax) ||
                         (bulletMaxX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
-                        (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)){
+                        (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)) {
 
                     shootablesToBeShot.add(shootable);
                     bulletsToBeRemoved.add(bullet);
 
-                    if(shootable instanceof MC) {
+                    if (shootable instanceof MC) {
                         soundManager.playMCSound();
                     } else {
                         soundManager.playSound(SoundType.ALVEJADO);
@@ -88,8 +87,11 @@ public class CollisionDetector {
     public void addBullet(Bullet bullet) {
 
         bulletsToBeAdded.add(bullet);
-        soundManager.playBatataSound();
-
+        if (bullet.getMC().getPlayerNumber() == 2) {
+            soundManager.playSound(SoundType.COCO);
+        } else {
+            soundManager.playBatataSound();
+        }
     }
 
     private void addBullets() {
@@ -139,12 +141,11 @@ public class CollisionDetector {
 
     public boolean isLevelCompleted() {
 
-        if(twoPlayers && shootables.size() == 1) {
+        if (twoPlayers && shootables.size() == 1) {
             return true;
-
         }
 
-        if(shootables.size() == 0) {
+        if (shootables.size() == 0) {
             return true;
         }
 

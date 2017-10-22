@@ -25,7 +25,7 @@ public class GameEntityFactory {
 
     public ArrayList<CodeCadet> getCodeCadets(ArrayList<boolean[]> cadetPosConfig, Grid grid) {
 
-        ArrayList<CodeCadet> codeCadets= new ArrayList<>();
+        ArrayList<CodeCadet> codeCadets = new ArrayList<>();
 
         Direction initialDirection = Direction.RIGHT;
 
@@ -45,8 +45,7 @@ public class GameEntityFactory {
 
                 Picture picture = new Picture(x, y, "images/parachutist-resized.png");
 
-
-                if(cadetPosConfig.get(i)[j]) {
+                if (cadetPosConfig.get(i)[j]) {
                     GridPosition position = new GridPosition(grid, picture);
                     CodeCadet codeCadet = new CodeCadet(grid, position, initialDirection);
                     codeCadets.add(codeCadet);
@@ -68,12 +67,16 @@ public class GameEntityFactory {
 
         Picture picture = new Picture(x, y, "images/pantoninho.png");
 
+        if (playerNumber == 2) {
+            picture = new Picture(x, y, "images/rodolfo.png");
+
+        }
+
         GridPosition gridPosition = new GridPosition(grid, picture);
 
         return new MC(grid, gridPosition, opposite, playerNumber++);
 
     }
-
 
 
 }

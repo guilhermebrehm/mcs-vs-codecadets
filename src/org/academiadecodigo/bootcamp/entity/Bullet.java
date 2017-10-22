@@ -11,22 +11,31 @@ public class Bullet extends GameEntity implements Movable {
 
     //Properties
     private Direction direction;
+    private MC mc;
 
     //Constructor
-    public Bullet(GameEntity entity) {
+    public Bullet(MC mc) {
 
-        setOpposite(entity.isOpposite());
+        this.mc = mc;
 
-        int x = entity.getGridPosition().getX() + 30;
-        int y = isOpposite() ? entity.getGridPosition().getMaxY() : entity.getGridPosition().getY() - 33;
+        setOpposite(mc.isOpposite());
+
+        int x = mc.getGridPosition().getX() + 30;
+        int y = isOpposite() ? mc.getGridPosition().getMaxY() : mc.getGridPosition().getY() - 33;
 
         Picture picture = new Picture(x,
                 y, "images/potato-icon.png");
 
-        setGrid(entity.getGrid());
-        setGridPosition(new GridPosition(entity.getGrid(), picture));
+        if(mc.getPlayerNumber() == 2) {
+            picture = new Picture(x,
+                    y, "images/coco.png");
+        }
 
-        direction = entity.getDirection();
+
+        setGrid(mc.getGrid());
+        setGridPosition(new GridPosition(mc.getGrid(), picture));
+
+        direction = mc.getDirection();
     }
 
     //Methods
@@ -46,5 +55,7 @@ public class Bullet extends GameEntity implements Movable {
         getGridPosition().delete();
     }
 
-
+    public MC getMC() {
+        return mc;
+    }
 }

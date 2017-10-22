@@ -13,7 +13,8 @@ public enum SoundType {
     ALVEJADO("alvejado"),
     BATATA_ARREBENTADA("batata_arrebentada"),
     PURE("xi_deu_pure"),
-    EASY("that_was_easy");
+    EASY("that_was_easy"),
+    COCO("coco");
 
     private String path;
 
