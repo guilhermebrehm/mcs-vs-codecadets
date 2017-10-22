@@ -63,16 +63,17 @@ public class GameEntityFactory {
 
         for (int i = 0; i < numRows; i++) {
 
-            int horizontalInterval = (grid.getWidth()) / (GameLevel.MAX_CADETS_PER_ROW + 1);
             int upperPadding = 10;
+            int horizontalPadding = 80;
+            int horizontalInterval = (grid.getWidth() - horizontalPadding) / (GameLevel.MAX_CADETS_PER_ROW + 2);
             int verticalInterval = (grid.getHeight() - upperPadding) / (numRows * 2);
 
             for (int j = 0; j < GameLevel.MAX_CADETS_PER_ROW; j++) {
 
-                int x = horizontalInterval + (j * (horizontalInterval + 1));
+                int x = horizontalPadding + horizontalInterval + (j * (horizontalInterval + 1));
                 int y = upperPadding + i * verticalInterval;
 
-                Picture picture = new Picture(x, y, "images/parachutist.png");
+                Picture picture = new Picture(x, y, "images/parachutist-resized.png");
 
 
                 if(cadetPosConfig.get(i)[j]) {
