@@ -29,18 +29,24 @@ public class SoundManager {
             System.out.println("No sound available");
             return;
         }
-        //System.out.println(currSound.isPlaying());
         currSound.play(true);
     }
 
     public static void playGameOverSound() {
         Sound gameOverSound;
+        int random = (int)(Math.random() * 3);
 
-        if((int)(Math.random() * 2) == 0) {
-            gameOverSound = SOUNDMAP.get(SoundType.BATATA_ARREBENTADA);
-        } else {
-            gameOverSound = SOUNDMAP.get(SoundType.PURE);
+        switch (random) {
+            case 0:
+                gameOverSound = SOUNDMAP.get(SoundType.BATATA_ARREBENTADA);
+                break;
+            case 1:
+                gameOverSound = SOUNDMAP.get(SoundType.BATATA_PORRA);
+                break;
+            default:
+                gameOverSound = SOUNDMAP.get(SoundType.PURE);
         }
+
         gameOverSound.play(true);
     }
 }
