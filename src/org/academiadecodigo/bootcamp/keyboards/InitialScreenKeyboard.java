@@ -1,5 +1,6 @@
-package org.academiadecodigo.bootcamp;
+package org.academiadecodigo.bootcamp.keyboards;
 
+import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;

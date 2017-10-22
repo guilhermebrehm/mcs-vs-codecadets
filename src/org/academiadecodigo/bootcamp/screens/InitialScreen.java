@@ -1,5 +1,6 @@
-package org.academiadecodigo.bootcamp;
+package org.academiadecodigo.bootcamp.screens;
 
+import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Canvas;
 import org.academiadecodigo.simplegraphics.graphics.Text;

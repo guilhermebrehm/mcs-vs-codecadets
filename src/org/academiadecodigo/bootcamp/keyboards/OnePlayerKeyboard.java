@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp;
+package org.academiadecodigo.bootcamp.keyboards;
 
 import org.academiadecodigo.bootcamp.entity.Controllable;
 import org.academiadecodigo.bootcamp.grid.Direction;

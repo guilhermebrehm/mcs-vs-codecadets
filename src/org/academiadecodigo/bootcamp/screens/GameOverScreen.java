@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp;
+package org.academiadecodigo.bootcamp.screens;
 
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 

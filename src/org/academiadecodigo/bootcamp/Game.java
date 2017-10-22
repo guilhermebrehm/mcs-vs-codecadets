@@ -2,12 +2,20 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
+import org.academiadecodigo.bootcamp.keyboards.InitialScreenKeyboard;
+import org.academiadecodigo.bootcamp.keyboards.MenuScreenKeyboard;
+import org.academiadecodigo.bootcamp.keyboards.OnePlayerKeyboard;
+import org.academiadecodigo.bootcamp.keyboards.TwoPlayerKeyboard;
+import org.academiadecodigo.bootcamp.screens.GameOverScreen;
+import org.academiadecodigo.bootcamp.screens.InitialScreen;
+import org.academiadecodigo.bootcamp.screens.LevelScreen;
+import org.academiadecodigo.bootcamp.screens.FinalScreen;
+import org.academiadecodigo.bootcamp.screens.MenuScreen;
 import org.academiadecodigo.bootcamp.sound.SoundManager;
 import org.academiadecodigo.bootcamp.sound.SoundType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 /**
