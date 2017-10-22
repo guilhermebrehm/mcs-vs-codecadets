@@ -68,6 +68,7 @@ public class CollisionDetector {
                         (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)) {
                     shootablesToBeShot.add(shootable);
                     bulletsToBeRemoved.add(bullet);
+                    soundManager.playSound(SoundType.ALVEJADO);
                 }
             }
 
