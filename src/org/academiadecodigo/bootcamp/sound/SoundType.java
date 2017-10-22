@@ -6,7 +6,7 @@ package org.academiadecodigo.bootcamp.sound;
 public enum SoundType {
     //TODO: inserir audios e seus paths
     BATATA("batata"),
-    BATATAS("batata"),
+    BATATAS("batatas"),
     BATATA_PORRA("batata_porra"),
     FODA_SE("fodase"), //quando mc toma tiro
     CONO("jesus"), //quando mc toma tiro

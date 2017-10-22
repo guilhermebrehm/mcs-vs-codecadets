@@ -49,4 +49,17 @@ public class SoundManager {
 
         gameOverSound.play(true);
     }
+
+    public static void playBatataSound() {
+        Sound batataSound;
+        int random = (int)(Math.random() * 2);
+
+        if(random == 0) {
+            batataSound = SOUNDMAP.get(SoundType.BATATA);
+        } else {
+            batataSound = SOUNDMAP.get(SoundType.BATATAS);
+        }
+
+        batataSound.play(true);
+    }
 }

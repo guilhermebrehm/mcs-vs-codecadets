@@ -85,7 +85,7 @@ public class CollisionDetector {
     public void addBullet(Bullet bullet) {
 
         bulletsToBeAdded.add(bullet);
-        soundManager.playSound(SoundType.BATATA);
+        soundManager.playBatataSound();
 
     }
 
