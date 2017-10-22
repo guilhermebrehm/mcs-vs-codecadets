@@ -60,7 +60,7 @@ public class CodeCadet extends GameEntity implements Shootable {
         }
 
 
-        if (directionCounter % 100 == 0) {
+        if (directionCounter % (getGrid().getWidth() / 10) == 0) {
 
             isGoingDown = true;
             previousDirection = getDirection();
