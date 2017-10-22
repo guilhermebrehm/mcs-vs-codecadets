@@ -20,7 +20,6 @@ public class Game {
     public static CollisionDetector collisionDetector;
     private InitialScreen initialScreen;
     private KeyboardHandler kBH;
-    private KeyboardHandler kBH1;
     private boolean twoPlayers;
     public static int NUM_LEVELS = 6;
     private MenuScreen menu;

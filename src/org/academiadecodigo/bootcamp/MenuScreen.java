@@ -14,7 +14,6 @@ public class MenuScreen {
     private Picture menu;
     private Game game;
     private boolean notChosen = true;
-    private boolean barDrawn = false;
 
     //Constructor
     public MenuScreen(Game game) {
