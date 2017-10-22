@@ -15,19 +15,9 @@ public class MC extends GameEntity implements Controllable, Shootable {
 
     //Properties
     private boolean willShoot;
-    private boolean dead;
+    private int health;
 
     //Constructor
-    public MC(Grid grid) {
-
-        super.setGrid(grid);
-        super.setGridPosition(getPosition(grid));
-
-        setDirection(null);
-
-        willShoot = false;
-    }
-
     public MC(Grid grid, boolean opposite) {
 
         setOpposite(opposite);
@@ -35,6 +25,7 @@ public class MC extends GameEntity implements Controllable, Shootable {
         super.setGridPosition(getPosition(grid));
 
         setDirection(null);
+        health = 3;
 
         willShoot = false;
     }
@@ -84,12 +75,13 @@ public class MC extends GameEntity implements Controllable, Shootable {
 
     @Override
     public void getShot() {
-        dead = true;
+
+        health--;
     }
 
     @Override
     public boolean isDead() {
-        return dead;
+        return (health <= 0);
     }
 
 }

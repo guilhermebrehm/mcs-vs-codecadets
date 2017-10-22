@@ -62,7 +62,8 @@ public class CollisionDetector {
                 if ((bulletX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
                         (bulletMaxX > xMin && bulletMaxX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax) ||
                         (bulletMaxX > xMin && bulletX < xMax) && (bulletY > yMin && bulletY < yMax) ||
-                        (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)) {
+                        (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)){
+
                     shootablesToBeShot.add(shootable);
                     bulletsToBeRemoved.add(bullet);
 
@@ -120,9 +121,10 @@ public class CollisionDetector {
 
             if (shootable.isDead()) {
                 shootables.remove(shootable);
-
             }
         }
+
+        shootablesToBeShot.clear();
     }
 
     public boolean isGameOver() {

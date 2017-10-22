@@ -103,7 +103,7 @@ public class Game {
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
         ArrayList<Shootable> shootables = new ArrayList<>(codeCadets);
         movables = new ArrayList<>(codeCadets);
-        MC mc = new MC(grid);
+        MC mc = new MC(grid, false);
         movables.add(mc);
         collisionDetector = new CollisionDetector(movables, shootables, mc, false);
         kBH = new OnePlayerKeyboard(mc);
@@ -119,7 +119,7 @@ public class Game {
         background.draw();
         ArrayList<Shootable> shootables = new ArrayList<>();
         movables = new ArrayList<>();
-        MC mc = new MC(grid);
+        MC mc = new MC(grid, false);
         MC mc2 = new MC(grid, true);
         movables.add(mc);
         movables.add(mc2);
@@ -136,6 +136,7 @@ public class Game {
             }
 
             collisionDetector.check();
+            System.out.println(shootables.size());
 
             try {
                 Thread.sleep(5);
