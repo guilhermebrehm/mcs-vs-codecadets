@@ -117,6 +117,7 @@ public class CollisionDetector {
 
             if (shootable.isDead()) {
                 shootables.remove(shootable);
+
             }
         }
     }
@@ -124,6 +125,7 @@ public class CollisionDetector {
     public boolean isGameOver() {
         for (Shootable cadet : shootables) {
             if (cadet.getGridPosition().getMaxY() == mc.getGridPosition().getY()) {
+                soundManager.playGameOverSound();
                 return true;
             }
         }

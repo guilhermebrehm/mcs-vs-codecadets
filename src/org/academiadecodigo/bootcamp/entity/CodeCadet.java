@@ -3,6 +3,8 @@ package org.academiadecodigo.bootcamp.entity;
 import org.academiadecodigo.bootcamp.grid.Direction;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.grid.GridPosition;
+import org.academiadecodigo.bootcamp.sound.SoundManager;
+import org.academiadecodigo.bootcamp.sound.SoundType;
 
 /**
  * Created by codecadet on 13/10/2017.
