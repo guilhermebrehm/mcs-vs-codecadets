@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.sound.SoundManager;
+import org.academiadecodigo.bootcamp.sound.SoundType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -80,8 +81,8 @@ public class Game {
             }
         }
 
-        new FinalScreen(grid);
-
+        new FinalScreen();
+        SoundManager.playSound(SoundType.EASY);
     }
 
     private void loadLevel(int level) {

@@ -14,7 +14,7 @@ public class FinalScreen {
     private Picture image;
 
     //Constructor
-    public FinalScreen(Grid grid) {
+    public FinalScreen() {
         image = new Picture(Grid.PADDING, Grid.PADDING, "images/that-was-easy-800px.png");
         image.draw();
     }
