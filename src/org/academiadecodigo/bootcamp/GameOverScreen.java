@@ -12,9 +12,15 @@ public class GameOverScreen {
 
     //Constructor
     public GameOverScreen() {
+        gameOver = new Picture(10, 10, "images/Game-Over-800px.png");
+        gameOver.draw();
+
         while(true) {
-            gameOver = new Picture(10, 10, "images/Game-Over-800px.png");
-            gameOver.draw();
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 
