@@ -101,6 +101,8 @@ public class Game {
 
     private void load2PlayerArena() {
 
+        //TODO: insert batata_porra sound when 2P game ends
+
         this.grid = new Grid(800,600);
         Picture background = new Picture(10,10,"images/blackwood-800px.jpg");
         background.draw();

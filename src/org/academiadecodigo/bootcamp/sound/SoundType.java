@@ -8,8 +8,8 @@ public enum SoundType {
     BATATA("batata"),
     BATATAS("batatas"),
     BATATA_PORRA("batata_porra"),
-    FODA_SE("fodase"), //quando mc toma tiro
-    CONO("jesus"), //quando mc toma tiro
+    FODA_SE("fodase"),
+    CONO("jesus"),
     ALVEJADO("alvejado"),
     BATATA_ARREBENTADA("batata_arrebentada"),
     PURE("xi_deu_pure");

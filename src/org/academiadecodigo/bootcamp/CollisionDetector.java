@@ -1,9 +1,6 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.entity.Bullet;
-import org.academiadecodigo.bootcamp.entity.MC;
-import org.academiadecodigo.bootcamp.entity.Movable;
-import org.academiadecodigo.bootcamp.entity.Shootable;
+import org.academiadecodigo.bootcamp.entity.*;
 import org.academiadecodigo.bootcamp.grid.Grid;
 import org.academiadecodigo.bootcamp.sound.Sound;
 import org.academiadecodigo.bootcamp.sound.SoundManager;
@@ -68,7 +65,12 @@ public class CollisionDetector {
                         (bulletX > xMin && bulletX < xMax) && (bulletMaxY > yMin && bulletMaxY < yMax)) {
                     shootablesToBeShot.add(shootable);
                     bulletsToBeRemoved.add(bullet);
-                    soundManager.playSound(SoundType.ALVEJADO);
+
+                    if(shootable instanceof MC) {
+                        soundManager.playMCSound();
+                    } else {
+                        soundManager.playSound(SoundType.ALVEJADO);
+                    }
                 }
             }
 

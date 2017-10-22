@@ -62,4 +62,17 @@ public class SoundManager {
 
         batataSound.play(true);
     }
+
+    public static void playMCSound() {
+        Sound mcSound;
+        int random = (int)(Math.random() * 2);
+
+        if(random == 0) {
+            mcSound = SOUNDMAP.get(SoundType.FODA_SE);
+        } else {
+            mcSound = SOUNDMAP.get(SoundType.CONO);
+        }
+
+        mcSound.play(true);
+    }
 }
