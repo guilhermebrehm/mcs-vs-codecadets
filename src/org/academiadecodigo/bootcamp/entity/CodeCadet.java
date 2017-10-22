@@ -48,7 +48,7 @@ public class CodeCadet extends GameEntity implements Shootable {
 
         if (isGoingDown){
 
-            if(goingDownCounter % 20 == 0){
+            if(goingDownCounter % 15 == 0){
 
                 directionSwitch();
                 isGoingDown = false;
