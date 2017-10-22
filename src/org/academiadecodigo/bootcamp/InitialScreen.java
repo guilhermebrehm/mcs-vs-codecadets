@@ -18,7 +18,7 @@ public class InitialScreen {
     private Game game;
 
     //Constructor
-    public InitialScreen(Game game, Grid grid) {
+    public InitialScreen(Game game) {
         background = new Picture(10, 10, "images/Evil-Pantoninho-800px.png");
 
         background.draw();
@@ -50,7 +50,7 @@ public class InitialScreen {
         background.delete();
         System.out.println(Canvas.getInstance().getShapes().size());
 
-        game.start();
+        game.makeMenu();
 
     }
 

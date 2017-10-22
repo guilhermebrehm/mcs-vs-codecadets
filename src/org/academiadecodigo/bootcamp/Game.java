@@ -14,6 +14,7 @@ import java.util.ArrayList;
  */
 public class Game {
 
+    //Properties
     private Grid grid;
     private ArrayList<Movable> movables;
     public static CollisionDetector collisionDetector;
@@ -22,19 +23,21 @@ public class Game {
     private KeyboardHandler kBH1;
     private boolean twoPlayers;
     public static int NUM_LEVELS = 6;
+    private MenuScreen menu;
 
     //Constructor
-    public Game(boolean twoPlayers) {
+    public Game() {
 
         kBH = new InitialScreenKeyboard(this);
 
-        this.twoPlayers = twoPlayers;
-        initialScreen = new InitialScreen(this, grid);
+        initialScreen = new InitialScreen(this);
         initialScreen.show();
 
     }
 
+    //Methods
     public void start() {
+
 
         if (twoPlayers) {
             load2PlayerArena();
@@ -136,5 +139,18 @@ public class Game {
         return initialScreen;
     }
 
+    public void makeMenu() {
+        menu = new MenuScreen(this);
+        kBH = new MenuScreenKeyboard(this);
+        menu.chooseGame();
+    }
 
+
+    public MenuScreen getMenu() {
+        return menu;
+    }
+
+    public void setTwoPlayers(boolean twoPlayers) {
+        this.twoPlayers = twoPlayers;
+    }
 }
