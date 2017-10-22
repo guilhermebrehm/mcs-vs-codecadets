@@ -141,6 +141,7 @@ public class CollisionDetector {
 
         if(twoPlayers && shootables.size() == 1) {
             return true;
+
         }
 
         if(shootables.size() == 0) {

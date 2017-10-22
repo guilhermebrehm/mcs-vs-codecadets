@@ -13,6 +13,8 @@ import org.academiadecodigo.bootcamp.screens.FinalScreen;
 import org.academiadecodigo.bootcamp.screens.MenuScreen;
 import org.academiadecodigo.bootcamp.sound.SoundManager;
 import org.academiadecodigo.bootcamp.sound.SoundType;
+import org.academiadecodigo.simplegraphics.graphics.Color;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -59,7 +61,7 @@ public class Game {
 
             while (!collisionDetector.isLevelCompleted()) {
 
-                if(collisionDetector.isGameOver()){
+                if (collisionDetector.isGameOver()) {
                     new GameOverScreen();
                     break outerloop;
                 }
@@ -79,7 +81,7 @@ public class Game {
             }
 
 
-            if(i != NUM_LEVELS -1) {
+            if (i != NUM_LEVELS - 1) {
                 new LevelScreen();
                 try {
                     Thread.sleep(100);
@@ -95,15 +97,15 @@ public class Game {
 
     private void loadLevel(int level) {
 
-        grid = new Grid(800,600);
-        Picture background = new Picture(10,10, "images/background-800px.png");
+        grid = new Grid(800, 600);
+        Picture background = new Picture(10, 10, "images/background-800px.png");
         background.draw();
         GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
         ArrayList<Shootable> shootables = new ArrayList<>(codeCadets);
         movables = new ArrayList<>(codeCadets);
-        MC mc = new MC(grid, false);
+        MC mc = gameEntityFactory.getMC(false, grid);
         movables.add(mc);
         collisionDetector = new CollisionDetector(movables, shootables, mc, false);
         kBH = new OnePlayerKeyboard(mc);
@@ -114,19 +116,28 @@ public class Game {
 
         //TODO: insert batata_porra sound when 2P game ends
 
-        this.grid = new Grid(800,600);
-        Picture background = new Picture(10,10,"images/blackwood-800px.jpg");
+
+
+        this.grid = new Grid(800, 600);
+        Picture background = new Picture(10, 10, "images/blackwood-800px.jpg");
         background.draw();
+        GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<Shootable> shootables = new ArrayList<>();
         movables = new ArrayList<>();
-        MC mc = new MC(grid, false);
-        MC mc2 = new MC(grid, true);
+        MC mc = gameEntityFactory.getMC(false, grid);
+        MC mc2 = gameEntityFactory.getMC(true, grid);
         movables.add(mc);
         movables.add(mc2);
         shootables.add(mc);
         shootables.add(mc2);
         collisionDetector = new CollisionDetector(movables, shootables, mc, true);
         kBH = new TwoPlayerKeyboard(mc, mc2);
+        Text player1Display = new Text(Grid.PADDING + 30, Grid.PADDING + 20,"");
+        player1Display.grow(20, 10);
+        Text player2Display = new Text(grid.getWidth() - 60, grid.getHeight() - 20, mc.getHealth() + "");
+        player2Display.grow(20, 10);
+        player1Display.setColor(Color.WHITE);
+        player2Display.setColor(Color.WHITE);
 
         while (!collisionDetector.isLevelCompleted()) {
 
@@ -137,6 +148,11 @@ public class Game {
 
             collisionDetector.check();
             System.out.println(shootables.size());
+
+            player2Display.setText("Life: " + mc.getHealth());
+            player1Display.setText("Life: " + mc2.getHealth());
+            player1Display.draw();
+            player2Display.draw();
 
             try {
                 Thread.sleep(5);
@@ -163,5 +179,10 @@ public class Game {
 
     public void setTwoPlayers(boolean twoPlayers) {
         this.twoPlayers = twoPlayers;
+    }
+
+    public void display2PlayerText() {
+
+
     }
 }

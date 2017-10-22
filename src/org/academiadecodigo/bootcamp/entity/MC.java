@@ -16,34 +16,20 @@ public class MC extends GameEntity implements Controllable, Shootable {
     //Properties
     private boolean willShoot;
     private int health;
+    private int playerNumber;
 
     //Constructor
-    public MC(Grid grid, boolean opposite) {
+    public MC(Grid grid, GridPosition gridPosition,boolean opposite, int playerNumber) {
 
         setOpposite(opposite);
         super.setGrid(grid);
-        super.setGridPosition(getPosition(grid));
+        super.setGridPosition(gridPosition);
 
         setDirection(null);
         health = 3;
 
         willShoot = false;
-    }
-
-
-    private GridPosition getPosition(Grid grid) {
-
-        int x = (int) (Math.floor(grid.getWidth() / 2));
-        int y = grid.getHeight() - 150;
-
-        if(isOpposite()) {
-            x = (int) (Math.floor(grid.getWidth() / 2));
-            y = Grid.PADDING;
-        }
-
-        Picture picture = new Picture(x, y, "images/pantoninho-90px (1).png");
-
-        return new GridPosition(grid, picture);
+        this.playerNumber = playerNumber;
     }
 
     public void shoot() {
@@ -84,4 +70,7 @@ public class MC extends GameEntity implements Controllable, Shootable {
         return (health <= 0);
     }
 
+    public int getHealth() {
+        return health;
+    }
 }
