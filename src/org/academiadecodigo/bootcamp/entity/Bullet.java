@@ -17,15 +17,14 @@ public class Bullet extends GameEntity implements Movable {
 
         setOpposite(entity.isOpposite());
 
-        int x = entity.getGridPosition().getX() + entity.getGridPosition().getWidth()/2;
-        int y = isOpposite() ? entity.getGridPosition().getMaxY() - 20 : entity.getGridPosition().getY() - 70;
+        int x = entity.getGridPosition().getX() + 30;
+        int y = isOpposite() ? entity.getGridPosition().getMaxY() : entity.getGridPosition().getY() - 33;
 
         Picture picture = new Picture(x,
                 y, "images/potato-icon.png");
 
         setGrid(entity.getGrid());
         setGridPosition(new GridPosition(entity.getGrid(), picture));
-        getGridPosition().grow(-30, -30);
 
         direction = entity.getDirection();
     }
