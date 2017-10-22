@@ -66,11 +66,9 @@ public class MC extends GameEntity implements Controllable, Shootable {
         if (willShoot) {
             willShoot = false;
             Game.collisionDetector.addBullet(new Bullet(this));
-            System.out.println("passei");
         }
 
         getGridPosition().moveInDirection(getDirection());
-        System.out.println("moved");
 
     }
 
