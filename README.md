@@ -1,4 +1,4 @@
-![alt text](./logo.png "Logo Title Text 1")
+![alt text](resources/images/logo.png "Logo Title Text 1")
 
 # MCs vs CodeCadets
 

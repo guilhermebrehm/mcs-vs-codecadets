@@ -19,7 +19,7 @@ public class MenuScreen {
     //Constructor
     public MenuScreen(Game game) {
         this.game = game;
-        menu = new Picture(Grid.PADDING,Grid.PADDING,"images/menuscreen.png");
+        menu = new Picture(Grid.PADDING,Grid.PADDING,"resources/images/menuscreen.png");
         menu.draw();
     }
 

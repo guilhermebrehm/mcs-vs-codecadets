@@ -20,12 +20,12 @@ public class LevelScreen {
     //Constructor
     public LevelScreen() {
 
-        this.potatoes = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-01.png");
-        this.potatoes2 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-02.png");
-        this.potatoes3 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-03.png");
-        this.potatoes4 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-04.png");
-        this.potatoes5 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-05.png");
-        this.potatoes6 = new Picture(Grid.PADDING, Grid.PADDING, "images/lvl-screen-06.png");
+        this.potatoes = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-01.png");
+        this.potatoes2 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-02.png");
+        this.potatoes3 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-03.png");
+        this.potatoes4 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-04.png");
+        this.potatoes5 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-05.png");
+        this.potatoes6 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-06.png");
         potatoLoader();
     }
 

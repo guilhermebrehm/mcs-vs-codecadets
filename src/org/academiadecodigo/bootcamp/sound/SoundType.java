@@ -18,7 +18,7 @@ public enum SoundType {
     private String path;
 
     SoundType(String path) {
-        this.path = "/audios/" + path + ".wav";
+        this.path = "/resources/audios/" + path + ".wav";
     }
 
     public String getPath() {

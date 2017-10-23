@@ -14,6 +14,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -95,10 +96,10 @@ public class Game {
 
         grid = new Grid(800, 600);
 
-        Picture background = new Picture(10, 10, "images/background-800px.png");
+        Picture background = new Picture(10, 10, "resources/images/background-800px.png");
         background.draw();
 
-        GameLevel gameLevel = new GameLevel("levels/" + level + ".lvl");
+        GameLevel gameLevel = new GameLevel("resources/levels/" + level + ".lvl");
 
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
         ArrayList<CodeCadet> codeCadets = gameEntityFactory.getCodeCadets(gameLevel.getCadetArray(), grid);
@@ -117,7 +118,7 @@ public class Game {
     private void load2PlayerArena() {
 
         this.grid = new Grid(800, 600);
-        Picture background = new Picture(10, 10, "images/blackwood-800px.jpg");
+        Picture background = new Picture(10, 10, "resources/images/blackwood-800px.jpg");
         background.draw();
 
         GameEntityFactory gameEntityFactory = new GameEntityFactory();
@@ -135,7 +136,7 @@ public class Game {
 
         kBH = new TwoPlayerKeyboard(mc, mc2);
 
-        Text player1Display = new Text(Grid.PADDING + 30, Grid.PADDING + 20,"");
+        Text player1Display = new Text(Grid.PADDING + 30, Grid.PADDING + 20, "");
         player1Display.grow(20, 10);
         Text player2Display = new Text(grid.getWidth() - 60, grid.getHeight() - 20, mc.getHealth() + "");
         player2Display.grow(20, 10);
@@ -164,7 +165,7 @@ public class Game {
             }
         }
 
-        if(((MC)shootables.get(0)).getPlayerNumber() == 1){
+        if (((MC) shootables.get(0)).getPlayerNumber() == 1) {
             new Player1Wins();
         } else {
             new Player2Wins();

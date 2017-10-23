@@ -13,7 +13,7 @@ public class Player2Wins {
 
     //Constructor
     public Player2Wins() {
-        image = new Picture(Grid.PADDING,Grid.PADDING,"images/player-2-win.png");
+        image = new Picture(Grid.PADDING,Grid.PADDING,"resources/images/player-2-win.png");
         image.draw();
     }
 }

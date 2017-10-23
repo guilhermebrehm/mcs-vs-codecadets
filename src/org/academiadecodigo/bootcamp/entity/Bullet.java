@@ -24,11 +24,11 @@ public class Bullet extends GameEntity implements Movable {
         int y = isOpposite() ? mc.getGridPosition().getMaxY() : mc.getGridPosition().getY() - 33;
 
         Picture picture = new Picture(x,
-                y, "images/potato-icon.png");
+                y, "resources/images/potato-icon.png");
 
         if(mc.getPlayerNumber() == 2) {
             picture = new Picture(x,
-                    y, "images/coco.png");
+                    y, "resources/images/coco.png");
         }
 
 

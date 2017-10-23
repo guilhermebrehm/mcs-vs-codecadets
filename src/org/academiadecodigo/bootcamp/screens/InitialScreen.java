@@ -20,10 +20,10 @@ public class InitialScreen {
 
     //Constructor
     public InitialScreen(Game game) {
-        background = new Picture(10, 10, "images/Evil-Pantoninho-800px.png");
+        background = new Picture(10, 10, "resources/images/Evil-Pantoninho-800px.png");
 
         background.draw();
-        letters = new Picture(10, 10, "insert.png");
+        letters = new Picture(10, 10, "resources/images/insert.png");
         letters.grow(-900, -20);
         letters.translate(-850, 0);
         this.game = game;

@@ -42,7 +42,7 @@ public class GameEntityFactory {
                 int x = horizontalPadding + horizontalInterval + (j * (horizontalInterval + 1));
                 int y = upperPadding + i * verticalInterval;
 
-                Picture picture = new Picture(x, y, "images/parachutist-resized.png");
+                Picture picture = new Picture(x, y, "resources/images/parachutist-resized.png");
 
                 if (cadetPosConfig.get(i)[j]) {
                     GridPosition position = new GridPosition(grid, picture);
@@ -63,10 +63,10 @@ public class GameEntityFactory {
         int x = (int) (Math.floor(grid.getWidth() / 2));
         int y = opposite ? Grid.PADDING + 30 : grid.getHeight() - 140;
 
-        Picture picture = new Picture(x, y, "images/pantoninho.png");
+        Picture picture = new Picture(x, y, "resources/images/pantoninho.png");
 
         if (playerNumber == 2) {
-            picture = new Picture(x, y, "images/rodolfo.png");
+            picture = new Picture(x, y, "resources/images/rodolfo.png");
 
         }
 

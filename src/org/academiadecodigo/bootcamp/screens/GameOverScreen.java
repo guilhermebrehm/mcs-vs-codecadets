@@ -12,7 +12,7 @@ public class GameOverScreen {
 
     //Constructor
     public GameOverScreen() {
-        gameOver = new Picture(10, 10, "images/Game-Over-800px.png");
+        gameOver = new Picture(10, 10, "resources/images/Game-Over-800px.png");
         gameOver.draw();
 
         while(true) {
