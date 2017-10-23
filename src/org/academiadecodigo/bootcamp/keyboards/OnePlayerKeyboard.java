@@ -48,7 +48,9 @@ public class OnePlayerKeyboard implements KeyboardHandler {
     @Override
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
-        controllable.setDirection(null);
+        if(keyboardEvent.getKey() == KEY_RIGHT || keyboardEvent.getKey() == KEY_LEFT) {
+            controllable.setDirection(null);
+        }
     }
 
     private void registerListeners() {
