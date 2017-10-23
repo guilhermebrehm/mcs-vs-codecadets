@@ -142,6 +142,7 @@ public class CollisionDetector {
     public boolean isLevelCompleted() {
 
         if (twoPlayers && shootables.size() == 1) {
+            SoundManager.playSound(SoundType.BATATA_PORRA);
             return true;
         }
 

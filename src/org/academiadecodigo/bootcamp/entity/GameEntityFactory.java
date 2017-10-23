@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp.entity;
 
-import com.sun.tools.javac.jvm.Code;
 import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.GameLevel;
 import org.academiadecodigo.bootcamp.grid.Direction;
@@ -59,7 +58,6 @@ public class GameEntityFactory {
 
     }
 
-
     public MC getMC(boolean opposite, Grid grid) {
 
         int x = (int) (Math.floor(grid.getWidth() / 2));
@@ -75,7 +73,6 @@ public class GameEntityFactory {
         GridPosition gridPosition = new GridPosition(grid, picture);
 
         return new MC(grid, gridPosition, opposite, playerNumber++);
-
     }
 
 

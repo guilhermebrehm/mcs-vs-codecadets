@@ -6,9 +6,6 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-import sun.jvm.hotspot.memory.Space;
-
-import java.security.Key;
 
 import static org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent.*;
 
@@ -25,10 +22,6 @@ public class OnePlayerKeyboard implements KeyboardHandler {
         this.controllable = controllable;
         keyboard = new Keyboard(this);
         registerListeners();
-    }
-
-    public void setControllable(Controllable controllable) {
-        this.controllable = controllable;
     }
 
     @Override
