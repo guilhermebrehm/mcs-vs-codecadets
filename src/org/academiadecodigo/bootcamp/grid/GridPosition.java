@@ -12,19 +12,7 @@ public class GridPosition {
     private Shape shape;
 
     //Constructor
-    public GridPosition(int x, int y, Grid grid) {
-
-        this.grid = grid;
-
-        shape = new Rectangle(Grid.PADDING + x, Grid.PADDING + y, Grid.CELL_SIZE, Grid.CELL_SIZE);
-        ((Rectangle) shape).fill();
-    }
-
     public GridPosition(Grid grid, Shape shape) {
-
-        if(!(shape instanceof Movable)) {
-            System.out.println("FUCK YOU RETARD WHAT THE FUCK YOU TRYNA DO?!?!!111!?!?! ..bitch");
-        }
 
         this.grid = grid;
 
@@ -112,25 +100,8 @@ public class GridPosition {
         return shape.getY() + getHeight();
     }
 
-    public boolean equals(GridPosition pos) {
-        return getX() == pos.getX() && getY() == pos.getY();
-    }
-
     public void delete() {
         shape.delete();
     }
-
-    public void setColor(Color color) {
-        ((Colorable) shape).setColor(color);
-    }
-
-    public void setShape(){
-        this.shape = shape;
-    }
-
-    public void grow(double v1, double v2) {
-        shape.grow(v1, v2);
-    }
-
 
 }

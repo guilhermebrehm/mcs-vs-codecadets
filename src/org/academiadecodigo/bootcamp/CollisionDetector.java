@@ -21,8 +21,6 @@ public class CollisionDetector {
     private ArrayList<Shootable> shootables;
     private MC mc;
 
-    private SoundManager soundManager;
-
     private boolean twoPlayers;
 
     public CollisionDetector(ArrayList<Movable> movables, ArrayList<Shootable> shootables, MC mc, boolean twoPlayers) {
@@ -36,8 +34,8 @@ public class CollisionDetector {
 
         this.mc = mc;
 
-        soundManager = new SoundManager();
         this.twoPlayers = twoPlayers;
+        new SoundManager();
     }
 
     public void check() {
@@ -67,9 +65,9 @@ public class CollisionDetector {
                     bulletsToBeRemoved.add(bullet);
 
                     if (shootable instanceof MC) {
-                        soundManager.playMCSound();
+                        SoundManager.playMCSound();
                     } else {
-                        soundManager.playSound(SoundType.ALVEJADO);
+                        SoundManager.playSound(SoundType.ALVEJADO);
                     }
                 }
             }
@@ -88,9 +86,9 @@ public class CollisionDetector {
 
         bulletsToBeAdded.add(bullet);
         if (bullet.getMC().getPlayerNumber() == 2) {
-            soundManager.playSound(SoundType.COCO);
+            SoundManager.playSound(SoundType.COCO);
         } else {
-            soundManager.playBatataSound();
+            SoundManager.playBatataSound();
         }
     }
 
@@ -132,7 +130,7 @@ public class CollisionDetector {
     public boolean isGameOver() {
         for (Shootable cadet : shootables) {
             if (cadet.getGridPosition().getMaxY() == mc.getGridPosition().getY()) {
-                soundManager.playGameOverSound();
+                SoundManager.playGameOverSound();
                 return true;
             }
         }
@@ -142,7 +140,7 @@ public class CollisionDetector {
     public boolean isLevelCompleted() {
 
         if (twoPlayers && shootables.size() == 1) {
-            SoundManager.playSound(SoundType.BATATA_PORRA);
+            SoundManager.playGameOverSound();
             return true;
         }
 

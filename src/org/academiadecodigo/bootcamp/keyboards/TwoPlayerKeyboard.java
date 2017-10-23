@@ -27,10 +27,6 @@ public class TwoPlayerKeyboard implements KeyboardHandler {
 
     }
 
-    public void setControllable(Controllable controllable) {
-        this.controllable = controllable;
-    }
-
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 

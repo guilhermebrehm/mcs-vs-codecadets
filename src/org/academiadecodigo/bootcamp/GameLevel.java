@@ -14,7 +14,6 @@ public class GameLevel {
 
     private BufferedReader bReader;
     private ArrayList<boolean[]> cadetLevelConfig;
-    private String line;
     public static int MAX_CADETS_PER_ROW = 8;
 
     public GameLevel(String file) {
@@ -55,6 +54,8 @@ public class GameLevel {
     public void loadFromFile() {
 
         try {
+            String line;
+
             while((line = bReader.readLine()) != null){
 
                 cadetLevelConfig.add(lineParser(line));

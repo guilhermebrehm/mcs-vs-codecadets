@@ -16,9 +16,4 @@ public class Player1Wins {
         image = new Picture(Grid.PADDING,Grid.PADDING,"images/player-1-win.png");
         image.draw();
     }
-
-    //Methods
-    public void hide() {
-        image.delete();
-    }
 }
