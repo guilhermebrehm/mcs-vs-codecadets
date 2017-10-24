@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<project name="spaceimpact" default="jarfile">
+<project name="mcs-vs-codecadets" default="jarfile">
 
     <!-- Initialize build properties  -->
     <target name="init" description="Initializes properties">

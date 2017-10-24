@@ -59,7 +59,8 @@ public class Game {
             while (!collisionDetector.isLevelCompleted()) {
 
                 if (collisionDetector.isGameOver()) {
-                    new GameOverScreen();
+                    Screen gameOverScreen = new Screen("resources/images/Game-Over-800px.png");
+                    gameOverScreen.draw(true);
                     break outerloop;
                 }
 
@@ -79,7 +80,8 @@ public class Game {
 
 
             if (i != NUM_LEVELS - 1) {
-                new LevelScreen();
+                LevelScreen levelScreen = new LevelScreen();
+                levelScreen.potatoLoader();
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
@@ -88,7 +90,8 @@ public class Game {
             }
         }
 
-        new FinalScreen();
+        Screen finalScreen = new Screen("resources/images/that-was-easy-800px.png");
+        finalScreen.draw();
         SoundManager.playSound(SoundType.EASY);
     }
 
@@ -165,11 +168,9 @@ public class Game {
             }
         }
 
-        if (((MC) shootables.get(0)).getPlayerNumber() == 1) {
-            new Player1Wins();
-        } else {
-            new Player2Wins();
-        }
+        Screen victoryScreen = new Screen(
+                "resources/images/player-" + ((MC) shootables.get(0)).getPlayerNumber() + "-win.png");
+        victoryScreen.draw();
     }
 
     public InitialScreen getInitialScreen() {

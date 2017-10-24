@@ -8,36 +8,17 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 public class LevelScreen {
 
-    //Properties
-    private Picture potatoes;
-    private Picture potatoes2;
-    private Picture potatoes3;
-    private Picture potatoes4;
-    private Picture potatoes5;
-    private Picture potatoes6;
-
-
-    //Constructor
-    public LevelScreen() {
-
-        this.potatoes = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-01.png");
-        this.potatoes2 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-02.png");
-        this.potatoes3 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-03.png");
-        this.potatoes4 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-04.png");
-        this.potatoes5 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-05.png");
-        this.potatoes6 = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-06.png");
-        potatoLoader();
-    }
-
     //Methods
     public void potatoLoader() {
-        Picture[] potatoArray = new Picture[]{potatoes, potatoes2, potatoes3, potatoes4, potatoes5, potatoes6};
 
         try {
-            for (Picture p : potatoArray) {
-                p.draw();
+            for (int i = 0; i < 6; i++) {
+
+                Picture picture = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/lvl-screen-0" + (i+1) + ".png");
+                picture.draw();
                 Thread.sleep(500);
             }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

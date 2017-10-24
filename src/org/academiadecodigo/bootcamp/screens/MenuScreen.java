@@ -19,16 +19,16 @@ public class MenuScreen {
     //Constructor
     public MenuScreen(Game game) {
         this.game = game;
-        menu = new Picture(Grid.PADDING,Grid.PADDING,"resources/images/menuscreen.png");
+        menu = new Picture(Grid.PADDING, Grid.PADDING, "resources/images/menuscreen.png");
         menu.draw();
     }
 
     //Methods
     public void chooseGame() {
 
-        while(notChosen) {
+        while (notChosen) {
             try {
-                    Thread.sleep(200);
+                Thread.sleep(200);
             } catch (InterruptedException e) {
                 System.out.println("deu cócó no choose game");
             }
