@@ -14,7 +14,6 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -59,8 +58,8 @@ public class Game {
             while (!collisionDetector.isLevelCompleted()) {
 
                 if (collisionDetector.isGameOver()) {
-                    Screen gameOverScreen = new Screen("resources/images/Game-Over-800px.png");
-                    gameOverScreen.draw(true);
+
+                    ScreenManager.displayScreen(ScreenType.GAME_OVER,true);
                     break outerloop;
                 }
 
@@ -90,8 +89,7 @@ public class Game {
             }
         }
 
-        Screen finalScreen = new Screen("resources/images/that-was-easy-800px.png");
-        finalScreen.draw();
+        ScreenManager.displayScreen(ScreenType.THAT_WAS_EASY);
         SoundManager.playSound(SoundType.EASY);
     }
 

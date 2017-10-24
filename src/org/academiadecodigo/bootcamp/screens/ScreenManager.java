@@ -5,4 +5,18 @@ package org.academiadecodigo.bootcamp.screens;
  */
 public class ScreenManager {
 
+    public static void displayScreen(ScreenType screenType) {
+
+        Screen screen = new Screen(screenType.getPath());
+        screen.draw();
+    }
+
+    public static void displayScreen(ScreenType screenType, boolean hold) {
+
+        Screen screen = new Screen(screenType.getPath());
+        screen.draw(hold);
+    }
+
+
+
 }
