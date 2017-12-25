@@ -18,3 +18,13 @@ Kickass _Space Invaders_ inspired game.
 - Guilherme Barros
 - Sérgio Pinheiro
 - Milena Balerine
+
+![alt text](resources/images/antoninho-atira.png "One player mode")
+
+![alt text](resources/images/p1-atira.png "Two player mode")
+
+![alt text](resources/images/p2-atira.png "Two player mode")
+
+![alt text](resources/images/collecting-potatoes.png "Loader")
+
+![alt text](resources/images/loader-complete.png "Loader")
